@@ -45,6 +45,7 @@ public class GameControl : MonoBehaviour {
             player1MoveText.gameObject.SetActive(false);
             player2MoveText.gameObject.SetActive(true);
             player1StartWaypoint = player1.GetComponent<Player>().waypointIndex - 1;
+            if (player1StartWaypoint == -1) player1StartWaypoint = waypoints.Length - 1;
         }
 
         if (reachDest(player2.GetComponent<Player>().waypointIndex,
@@ -54,6 +55,7 @@ public class GameControl : MonoBehaviour {
             player2MoveText.gameObject.SetActive(false);
             player1MoveText.gameObject.SetActive(true);
             player2StartWaypoint = player2.GetComponent<Player>().waypointIndex - 1;
+            if (player2StartWaypoint == -1) player2StartWaypoint = waypoints.Length - 1;
         }
 
         // Determind if the game ends
@@ -79,7 +81,10 @@ public class GameControl : MonoBehaviour {
     }
 
     private bool reachDest(int nextMoveIndex, int startIndex, int dist) {
-        if (nextMoveIndex - 1 == (startIndex + dist) % waypoints.Length) return true;
+        int currIndex = nextMoveIndex - 1;
+        if (currIndex == -1) currIndex = waypoints.Length - 1;
+
+        if (currIndex == (startIndex + dist) % waypoints.Length) return true;
         return false;
     }
 
