@@ -40,8 +40,6 @@ public class GameControl : MonoBehaviour {
         // Determine when to stop
         if (reachDest(player1.GetComponent<Player>().waypointIndex,
             player1StartWaypoint, diceSideThrown))
-        //if (player1.GetComponent<FollowThePath>().waypointIndex > 
-        //    player1StartWaypoint + diceSideThrown)
         {
             player1.GetComponent<Player>().moveAllowed = false;
             player1MoveText.gameObject.SetActive(false);

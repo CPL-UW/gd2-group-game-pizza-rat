@@ -26,5 +26,9 @@ public class ItemCollectable : MonoBehaviour {
 
     public Item GetItem() { return this.item; }
 
-    public void DestroySelf() { Destroy(gameObject); }
+    public void DestroySelf() {
+        Destroy(gameObject);
+        GameControl gc = GameObject.Find("GameControl").GetComponent<GameControl>();
+        gc.SpawnItemCollectable(item.itemType);
+    }
 }
