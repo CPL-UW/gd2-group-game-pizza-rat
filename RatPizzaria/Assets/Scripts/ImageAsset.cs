@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class ItemAsset : MonoBehaviour
+public class ImageAsset : MonoBehaviour
 {
-    public static ItemAsset Instance { get; private set; }
+    public static ImageAsset Instance { get; private set; }
 
     private void Awake() {
         Instance = this;
@@ -14,4 +14,7 @@ public class ItemAsset : MonoBehaviour
     public Sprite cheeseSprite;
     public Sprite mushroomSprite;
     public Sprite pepperoniSprite;
+    public Sprite cheesePizzaSprite;
+    public Sprite mushroomPizzaSprite;
+    public Sprite pepperoniPizzaSprite;
 }

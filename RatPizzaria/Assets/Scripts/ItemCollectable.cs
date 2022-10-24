@@ -12,7 +12,7 @@ public class ItemCollectable : MonoBehaviour {
     }
 
     public static ItemCollectable SpawnItemCollectable(Vector3 position, Item item) {
-        Transform transform = Instantiate(ItemAsset.Instance.pfItemCollectable, position, Quaternion.identity);
+        Transform transform = Instantiate(ImageAsset.Instance.pfItemCollectable, position, Quaternion.identity);
         ItemCollectable itemCollectable = transform.GetComponent<ItemCollectable>();
         itemCollectable.SetItem(item);
 
