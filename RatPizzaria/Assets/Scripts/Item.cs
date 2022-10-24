@@ -16,9 +16,9 @@ public class Item
     public Sprite GetSprite() {
         switch(itemType) {
             default:
-            case ItemType.Cheese: return ItemAsset.Instance.cheeseSprite;
-            case ItemType.Mushroom: return ItemAsset.Instance.mushroomSprite;
-            case ItemType.Pepperoni: return ItemAsset.Instance.pepperoniSprite;
+            case ItemType.Cheese: return ImageAsset.Instance.cheeseSprite;
+            case ItemType.Mushroom: return ImageAsset.Instance.mushroomSprite;
+            case ItemType.Pepperoni: return ImageAsset.Instance.pepperoniSprite;
         }
     }
 }
