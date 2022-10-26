@@ -1,0 +1,1141 @@
+fileFormatVersion: 2
+guid: 0db7ad092bae244fa9b1e387c73c7857
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -206676194693806160
+    second: transperent board (1)_0
+  - first:
+      213: -671707663958689321
+    second: transperent board (1)_1
+  - first:
+      213: -3369876021252460330
+    second: transperent board (1)_2
+  - first:
+      213: 1853666968358628596
+    second: transperent board (1)_3
+  - first:
+      213: -3572567282804000456
+    second: transperent board (1)_4
+  - first:
+      213: 6495365667869063713
+    second: transperent board (1)_5
+  - first:
+      213: 4079418847399625209
+    second: transperent board (1)_6
+  - first:
+      213: 4532894673109170881
+    second: transperent board (1)_7
+  - first:
+      213: -7405065915598886568
+    second: transperent board (1)_8
+  - first:
+      213: 5982028318264836663
+    second: transperent board (1)_9
+  - first:
+      213: 5957866359507562223
+    second: transperent board (1)_10
+  - first:
+      213: -4436186305720952937
+    second: transperent board (1)_11
+  - first:
+      213: -5941821706111330120
+    second: transperent board (1)_12
+  - first:
+      213: -1503976275910570574
+    second: transperent board (1)_13
+  - first:
+      213: 3582418422095901558
+    second: transperent board (1)_14
+  - first:
+      213: 4194257758180059815
+    second: transperent board (1)_15
+  - first:
+      213: -8397524145200321468
+    second: transperent board (1)_16
+  - first:
+      213: -6136181353697682318
+    second: transperent board (1)_17
+  - first:
+      213: -527315885802368115
+    second: transperent board (1)_18
+  - first:
+      213: -4307935639019094541
+    second: transperent board (1)_19
+  - first:
+      213: -2161082058929553516
+    second: transperent board (1)_20
+  - first:
+      213: 3493071462890503461
+    second: transperent board (1)_21
+  - first:
+      213: 8879871672144023044
+    second: transperent board (1)_22
+  - first:
+      213: -2051880552152630848
+    second: transperent board (1)_23
+  - first:
+      213: -1623273067405945487
+    second: transperent board (1)_24
+  - first:
+      213: -5085534924636841484
+    second: transperent board (1)_25
+  - first:
+      213: 4673313718450375625
+    second: transperent board (1)_26
+  - first:
+      213: -8710545214569296035
+    second: transperent board (1)_27
+  - first:
+      213: 3530901621905379546
+    second: transperent board (1)_28
+  - first:
+      213: -1316770271301227223
+    second: transperent board (1)_29
+  - first:
+      213: 6812121380288566271
+    second: transperent board (1)_30
+  - first:
+      213: -3839152977551009319
+    second: transperent board (1)_31
+  - first:
+      213: 4607999857554590038
+    second: transperent board (1)_32
+  - first:
+      213: -603480166035244346
+    second: transperent board (1)_33
+  - first:
+      213: -6451167285323473203
+    second: transperent board (1)_34
+  - first:
+      213: -68956038635430070
+    second: transperent board (1)_35
+  - first:
+      213: 6925097901598618979
+    second: transperent board (1)_36
+  - first:
+      213: -1346242337705908609
+    second: transperent board (1)_37
+  - first:
+      213: -4213136698205932480
+    second: transperent board (1)_38
+  - first:
+      213: -4039625372576420870
+    second: transperent board (1)_39
+  - first:
+      213: -8693735249854765482
+    second: transperent board (1)_40
+  - first:
+      213: -2245585760389805861
+    second: transperent board (1)_41
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: transperent board (1)_0
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1463
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b70fbf881db12df0800000000000000
+      internalID: -206676194693806160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_1
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1463
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d9b5d0407d9da6f0800000000000000
+      internalID: -671707663958689321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_2
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1463
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d0f320fc9bcb31d0800000000000000
+      internalID: -3369876021252460330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1463
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc24ec594c89b910800000000000000
+      internalID: 1853666968358628596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_4
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1463
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839f84c0cf0bb6ec0800000000000000
+      internalID: -3572567282804000456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_5
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1463
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a7a9739ac242a50800000000000000
+      internalID: 6495365667869063713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_6
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1351
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f1c949f3d10d9830800000000000000
+      internalID: 4079418847399625209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_7
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1351
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cabeea50b318ee30800000000000000
+      internalID: 4532894673109170881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_8
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1351
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 859206298cbeb3990800000000000000
+      internalID: -7405065915598886568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_9
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1351
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732c082bf0f640350800000000000000
+      internalID: 5982028318264836663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_10
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1351
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feea2b943e79ea250800000000000000
+      internalID: 5957866359507562223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_11
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1351
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 797dc021f008f62c0800000000000000
+      internalID: -4436186305720952937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_12
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1239
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b85780b3a86a8da0800000000000000
+      internalID: -5941821706111330120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_13
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1239
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd4cb3ab8dc02be0800000000000000
+      internalID: -1503976275910570574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1239
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67377dd039e47b130800000000000000
+      internalID: 3582418422095901558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_15
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1239
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aaafbc753ff43a30800000000000000
+      internalID: 4194257758180059815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_16
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1239
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ca19c2840067b80800000000000000
+      internalID: -8397524145200321468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1239
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c5977d197e7daa0800000000000000
+      internalID: -6136181353697682318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_18
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1127
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d835456eef89ea8f0800000000000000
+      internalID: -527315885802368115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_19
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1127
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fd75095c532734c0800000000000000
+      internalID: -4307935639019094541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_20
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1127
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49fb80b315b4202e0800000000000000
+      internalID: -2161082058929553516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_21
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1127
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d74a80df1e97030800000000000000
+      internalID: 3493071462890503461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_22
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1127
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ec23dfc34ab3b70800000000000000
+      internalID: 8879871672144023044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_23
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1127
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9f86752814683e0800000000000000
+      internalID: -2051880552152630848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_24
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1015
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1755fc3eeb9f879e0800000000000000
+      internalID: -1623273067405945487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_25
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1015
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f99d2c2eec8c69b0800000000000000
+      internalID: -5085534924636841484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_26
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1015
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cbc1301112fad040800000000000000
+      internalID: 4673313718450375625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_27
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1015
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f4e9d174ded1780800000000000000
+      internalID: -8710545214569296035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_28
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1015
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0558e4158400130800000000000000
+      internalID: 3530901621905379546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_29
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1015
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92dab403a64e9bde0800000000000000
+      internalID: -1316770271301227223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_30
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 903
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff391fe9d44898e50800000000000000
+      internalID: 6812121380288566271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_31
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 903
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d950b625b698bac0800000000000000
+      internalID: -3839152977551009319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_32
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 903
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 659879ac477e2ff30800000000000000
+      internalID: 4607999857554590038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_33
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 903
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cab9728cf100a7f0800000000000000
+      internalID: -603480166035244346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_34
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 903
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce5ca3a889d876a0800000000000000
+      internalID: -6451167285323473203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_35
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 903
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f540429d40b0ff0800000000000000
+      internalID: -68956038635430070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_36
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 679
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 365b69bc9d3ea1060800000000000000
+      internalID: 6925097901598618979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_37
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 679
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76a27ff9bf215de0800000000000000
+      internalID: -1346242337705908609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_38
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 679
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044f541ce7ee785c0800000000000000
+      internalID: -4213136698205932480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_39
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 567
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb6de1602e50f7c0800000000000000
+      internalID: -4039625372576420870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_40
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 567
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6566d150ad5a95780800000000000000
+      internalID: -8693735249854765482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transperent board (1)_41
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 567
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd84a4706a316d0e0800000000000000
+      internalID: -2245585760389805861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
