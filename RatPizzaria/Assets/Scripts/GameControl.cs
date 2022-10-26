@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour {
 
     private static GameObject player1MoveText, player2MoveText;
-
+    private static GameObject player1Points, player2Points;
     private static GameObject player1, player2;
 
     public static int diceSideThrown = 0;
@@ -22,6 +23,13 @@ public class GameControl : MonoBehaviour {
 
         player1 = GameObject.Find("Player1");
         player2 = GameObject.Find("Player2");
+
+        GameObject parent1 = GameObject.Find("Player1Points");
+        player1Points = parent1.transform.GetChild(0).gameObject;
+        player1.GetComponent<Player>().textBox = player1Points.GetComponent<Text>();
+        GameObject parent2 = GameObject.Find("Player2Points");
+        player2Points = parent2.transform.GetChild(0).gameObject;
+        player2.GetComponent<Player>().textBox = player2Points.GetComponent<Text>();
 
         player1.GetComponent<Player>().moveAllowed = false;
         player2.GetComponent<Player>().moveAllowed = false;
@@ -104,5 +112,10 @@ public class GameControl : MonoBehaviour {
     public void SpawnItemCollectable(Item.ItemType type) {
         int waypointIndex = Random.Range(0, waypoints.Length);
         ItemCollectable.SpawnItemCollectable(waypoints[waypointIndex].position, new Item { itemType = type, amount = 1 });
+    }
+
+    public void UpdatePlayerPoints(Player player, int points) {
+
+        player1Points.GetComponent<Text>().text = "" + points;
     }
 }

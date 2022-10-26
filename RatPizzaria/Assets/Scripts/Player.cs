@@ -9,11 +9,13 @@ public class Player : MonoBehaviour {
     public Transform[] waypoints;
 
     private Inventory inventory;
+    private int points = 0;
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private UI_Inventory uiInventory;
 
     [HideInInspector] public int waypointIndex = 0;
+    [HideInInspector] public Text textBox;
     [HideInInspector] public bool moveAllowed = false;
 
     // Use this for initialization
@@ -79,6 +81,8 @@ public class Player : MonoBehaviour {
                 }
             }
         }
+        points += order.GetOrderPoints();
+        textBox.text = "" + points;
         uiInventory.CreateNewOrder(order);
     }
 }
