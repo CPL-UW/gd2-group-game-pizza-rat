@@ -46,6 +46,30 @@ public class Order: MonoBehaviour {
         }
     }
 
+    public string GetRecipeString() {
+        switch (orderType) {
+            default:
+            case OrderType.CheesePizza:
+                return "Cheese";
+            case OrderType.MushroomPizza:
+                return "Cheese, Mushroom";
+            case OrderType.PepperoniPizza:
+                return "Cheese, Pepperoni";
+        }
+    }
+
+    public string GetOrderString() {
+        switch (orderType) {
+            default:
+            case OrderType.CheesePizza:
+                return "Cheese Pizza";
+            case OrderType.MushroomPizza:
+                return "Mushroom Pizza";
+            case OrderType.PepperoniPizza:
+                return "Pepperoni Pizza";
+        }
+    }
+
     public Sprite GetSprite() {
         switch (orderType) {
             default:
