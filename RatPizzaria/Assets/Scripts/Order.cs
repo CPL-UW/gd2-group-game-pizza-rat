@@ -70,6 +70,18 @@ public class Order: MonoBehaviour {
         }
     }
 
+    public int GetOrderPoints() {
+        switch (orderType) {
+            default:
+            case OrderType.CheesePizza:
+                return 1;
+            case OrderType.MushroomPizza:
+                return 2;
+            case OrderType.PepperoniPizza:
+                return 2;
+        }
+    }
+
     public Sprite GetSprite() {
         switch (orderType) {
             default:
