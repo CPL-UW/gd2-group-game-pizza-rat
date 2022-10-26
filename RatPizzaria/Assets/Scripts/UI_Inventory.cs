@@ -66,8 +66,9 @@ public class UI_Inventory : MonoBehaviour {
         }
 
         Array types = Enum.GetValues(typeof(Order.OrderType));
-        newOrder.GetComponent<Order>().orderType = (Order.OrderType)types.GetValue(Random.Range(0, types.Length));
+        newOrder.orderType = (Order.OrderType)types.GetValue(Random.Range(0, types.Length));
         newOrder.GetComponent<Image>().sprite = newOrder.GetComponent<Order>().GetSprite();
+        newOrder.GetComponent<HoverTip>().tipToShow = "<" + newOrder.GetOrderString() + ">\n" + newOrder.GetRecipeString();
 
     }
 }
