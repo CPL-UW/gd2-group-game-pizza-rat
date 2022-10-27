@@ -132,6 +132,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -198,6 +199,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -977,6 +990,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      bubble-backgrouncSky-96_17: -8675409969127033431
+      bubble-backgrouncSky-96_13: 2237453157602058427
+      bubble-backgrouncSky-96_14: 8863883928725214559
+      bubble-backgrouncSky-96_25: -906478263564587857
+      bubble-backgrouncSky-96_16: 1286434603801046440
+      bubble-backgrouncSky-96_22: 7292772647881867833
+      bubble-backgrouncSky-96_33: 7190065473502492176
+      bubble-backgrouncSky-96_9: -5291212685370239958
+      bubble-backgrouncSky-96_29: 6434230458672030933
+      bubble-backgrouncSky-96_19: -5864155894479226146
+      bubble-backgrouncSky-96_12: -2811091718354181782
+      bubble-backgrouncSky-96_0: 7835707771744040348
+      bubble-backgrouncSky-96_35: 5164684095059821509
+      bubble-backgrouncSky-96_21: 4968316578172790779
+      bubble-backgrouncSky-96_23: -165425623316620253
+      bubble-backgrouncSky-96_26: -7941096671886142173
+      bubble-backgrouncSky-96_28: -2129421622662705398
+      bubble-backgrouncSky-96_4: -7804180972355373634
+      bubble-backgrouncSky-96_31: 2140465260309678447
+      bubble-backgrouncSky-96_15: -5937837586711761754
+      bubble-backgrouncSky-96_24: -1572564284236337403
+      bubble-backgrouncSky-96_34: 2960075176674752314
+      bubble-backgrouncSky-96_18: -5172917880262158705
+      bubble-backgrouncSky-96_5: 248311103572926337
+      bubble-backgrouncSky-96_1: 630233548785865173
+      bubble-backgrouncSky-96_11: 2644569665256838919
+      bubble-backgrouncSky-96_32: 3394935498184025616
+      bubble-backgrouncSky-96_7: 5129071913616647709
+      bubble-backgrouncSky-96_3: -7917360411703385974
+      bubble-backgrouncSky-96_8: 1300658253768013258
+      bubble-backgrouncSky-96_20: -8741587801147709558
+      bubble-backgrouncSky-96_30: -4378462020624565184
+      bubble-backgrouncSky-96_6: -6991740748136158186
+      bubble-backgrouncSky-96_10: -3416525468543431304
+      bubble-backgrouncSky-96_2: 1061052026685119746
+      bubble-backgrouncSky-96_27: -5250259518265563809
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

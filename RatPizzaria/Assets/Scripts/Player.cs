@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
-    public Transform[] waypoints;
+    private Transform[][] waypoints;
+    public int[] currIndex = new int[] { 0, 0 };
 
     private Inventory inventory;
     private int points = 0;
@@ -20,7 +21,17 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     private void Start() {
-        transform.position = waypoints[0].transform.position;
+        Transform waypointParent = GameObject.Find("BoardWaypoints").GetComponent<Transform>();
+        waypoints = new Transform[waypointParent.childCount][];
+        for (int i = 0; i < waypointParent.childCount; i++) {
+            Transform row = waypointParent.GetChild(i);
+            waypoints[i] = new Transform[row.childCount];
+            for (int j = 0; j < row.childCount; j++) {
+                waypoints[i][j] = row.GetChild(j);
+            }
+        }
+
+        transform.position = waypoints[currIndex[0]][currIndex[1]].transform.position;
 
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
@@ -36,13 +47,35 @@ public class Player : MonoBehaviour {
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position,
-            waypoints[waypointIndex].transform.position,
-            moveSpeed * Time.deltaTime);
-
-        if (transform.position == waypoints[waypointIndex].transform.position) {
-            waypointIndex += 1;
-            waypointIndex = waypointIndex % waypoints.Length;
+        if (GameControl.diceSideThrown > 0) {
+            if (Input.GetKeyDown(KeyCode.W) && currIndex[0] > 0) { 
+                Transform dest = waypoints[--currIndex[0]][currIndex[1]].transform;
+                while (transform.position != dest.position) {
+                    transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
+                }
+                GameControl.diceSideThrown--;
+            }
+            else if (Input.GetKeyDown(KeyCode.A) && currIndex[1] > 0) {
+                Transform dest = waypoints[currIndex[0]][--currIndex[1]].transform;
+                while (transform.position != dest.position) {
+                    transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
+                }
+                GameControl.diceSideThrown--;
+            }
+            else if (Input.GetKeyDown(KeyCode.S) && currIndex[0]+1 < waypoints.Length) {
+                Transform dest = waypoints[++currIndex[0]][currIndex[1]].transform;
+                while (transform.position != dest.position) {
+                    transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
+                }
+                GameControl.diceSideThrown--;
+            }
+            else if (Input.GetKeyDown(KeyCode.D) && currIndex[1] + 1 < waypoints[0].Length) {
+                Transform dest = waypoints[currIndex[0]][++currIndex[1]].transform;
+                while (transform.position != dest.position) {
+                    transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
+                }
+                GameControl.diceSideThrown--;
+            }
         }
     }
 

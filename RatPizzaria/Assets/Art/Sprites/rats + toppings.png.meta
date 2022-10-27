@@ -1,34 +1,7 @@
 fileFormatVersion: 2
-guid: f4d436b86f5f2432ab9508b8aa6c3b38
+guid: 70d39670f287544da93c9e4991b65faf
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 3003997869079864670
-    second: bubble-box-48_0
-  - first:
-      213: 7596663717582300425
-    second: bubble-box-48_1
-  - first:
-      213: -130490030414618534
-    second: bubble-box-48_2
-  - first:
-      213: 856089997374098438
-    second: bubble-box-48_3
-  - first:
-      213: -8751864738379750924
-    second: bubble-box-48_4
-  - first:
-      213: -6072385080759489055
-    second: bubble-box-48_5
-  - first:
-      213: -1205112594101942948
-    second: bubble-box-48_6
-  - first:
-      213: -805814006970363201
-    second: bubble-box-48_7
-  - first:
-      213: 6290832352806306905
-    second: bubble-box-48_8
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -60,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -74,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,18 +90,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -144,190 +105,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bubble-box-48_0
+      name: rats + toppings_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
+        x: 4
+        y: 42
+        width: 18
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e552984652850b920800000000000000
-      internalID: 3003997869079864670
+      spriteID: 9b975380963444fdd9d73f9acc1e4349
+      internalID: 1798274497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_1
+      name: rats + toppings_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
+        x: 24
+        y: 44.666664
+        width: 18
+        height: 19.333334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 905679cf665cc6960800000000000000
-      internalID: 7596663717582300425
+      spriteID: 9528d353f2fb74d8380e2517a67c67ca
+      internalID: -2055930169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_2
+      name: rats + toppings_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
+        x: 44
+        y: 44.666664
+        width: 18
+        height: 19.333334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a50286a3208603ef0800000000000000
-      internalID: -130490030414618534
+      spriteID: 45705a7f2a50f4c5e882d1dffeb70d14
+      internalID: -1489768881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_3
+      name: rats + toppings_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
+        x: 4
+        y: 23.666666
+        width: 18
+        height: 19.333334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60c8f3d115171eb00800000000000000
-      internalID: 856089997374098438
+      spriteID: 1ca2137de27694eaea85a8c17c23c980
+      internalID: -225610670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_4
+      name: rats + toppings_4
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
+        x: 24
+        y: 23.666666
+        width: 18
+        height: 19.333334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f1ab9ac3612b8680800000000000000
-      internalID: -8751864738379750924
+      spriteID: ac4c4502a1239456e9378fe3dda66854
+      internalID: -941930893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_5
+      name: rats + toppings_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
+        x: 44
+        y: 23.666666
+        width: 18
+        height: 19.333334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ede2f121fd8abba0800000000000000
-      internalID: -6072385080759489055
+      spriteID: e9402cf3595e644d0802192301e6e8a4
+      internalID: 2043389339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_6
+      name: rats + toppings_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
+        x: 4
+        y: 2.666666
+        width: 18
+        height: 19.333334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c55443a0b74964fe0800000000000000
-      internalID: -1205112594101942948
+      spriteID: 275912a7a23df488eb5953eaf2de160a
+      internalID: -1738996375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_7
+      name: rats + toppings_7
       rect:
         serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        x: 24
+        y: 3
+        width: 18
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb25f771e6c21d4f0800000000000000
-      internalID: -805814006970363201
+      spriteID: 5965e763553174aec8e50958b361c7b3
+      internalID: 717149091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bubble-box-48_8
+      name: rats + toppings_8
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
+        x: 44
+        y: 2.666666
+        width: 18
+        height: 19.333334
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9540e82d1b68d4750800000000000000
-      internalID: 6290832352806306905
+      spriteID: b0f410e70fba1403892fdaaa9af15630
+      internalID: -2037590074
       vertices: []
       indices: 
       edges: []
@@ -343,15 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bubble-box-48_0: 3003997869079864670
-      bubble-box-48_1: 7596663717582300425
-      bubble-box-48_4: -8751864738379750924
-      bubble-box-48_5: -6072385080759489055
-      bubble-box-48_6: -1205112594101942948
-      bubble-box-48_2: -130490030414618534
-      bubble-box-48_7: -805814006970363201
-      bubble-box-48_8: 6290832352806306905
-      bubble-box-48_3: 856089997374098438
+      rats + toppings_2: -1489768881
+      rats + toppings_1: -2055930169
+      rats + toppings_5: 2043389339
+      rats + toppings_6: -1738996375
+      rats + toppings_3: -225610670
+      rats + toppings_4: -941930893
+      rats + toppings_8: -2037590074
+      rats + toppings_0: 1798274497
+      rats + toppings_7: 717149091
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

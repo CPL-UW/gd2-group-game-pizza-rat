@@ -38,12 +38,12 @@ public class UI_Inventory : MonoBehaviour {
 
         int x = 0;
         int y = 0;
-        float itemSlotCellSize = 70f;
+        float itemSlotCellSize = 30f;
         foreach (Item item in inventory.GetItemList()) {
             RectTransform itemSlotRectTrans = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTrans.gameObject.SetActive(true);
 
-            itemSlotRectTrans.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+            itemSlotRectTrans.anchoredPosition = new Vector2(20+x * itemSlotCellSize, y * itemSlotCellSize);
             Image image = itemSlotRectTrans.Find("image").GetComponent<Image>();
             image.sprite = item.GetSprite();
 
@@ -58,17 +58,17 @@ public class UI_Inventory : MonoBehaviour {
     public void CreateNewOrder(Order orderToRenew = null) {
         Order newOrder = orderToRenew;
         if (newOrder == null) {
-            float orderSlotCellSize = 120f;
-            int y = orderSlotContainer.childCount - 1;
+            float orderSlotCellSize = 60f;
+            int x = orderSlotContainer.childCount - 1;
             newOrder = Instantiate(orderSlotTemplate, orderSlotContainer).GetComponent<Order>();
             newOrder.gameObject.SetActive(true);
-            newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -y * orderSlotCellSize);
+            newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(20+x * orderSlotCellSize, -20);
         }
 
         Array types = Enum.GetValues(typeof(Order.OrderType));
         newOrder.orderType = (Order.OrderType)types.GetValue(Random.Range(0, types.Length));
         newOrder.GetComponent<Image>().sprite = newOrder.GetComponent<Order>().GetSprite();
-        newOrder.GetComponent<HoverTip>().tipToShow = "<" + newOrder.GetOrderString() + ">\n" + newOrder.GetRecipeString();
+        //newOrder.GetComponent<HoverTip>().tipToShow = "<" + newOrder.GetOrderString() + ">\n" + newOrder.GetRecipeString();
 
     }
 }

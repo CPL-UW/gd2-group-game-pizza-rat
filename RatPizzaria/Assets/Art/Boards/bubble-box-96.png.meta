@@ -132,6 +132,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -198,6 +199,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -977,6 +990,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      bubble-box-96_0: -9076970668353064430
+      bubble-box-96_5: 2529658863839137334
+      bubble-box-96_7: -8268338814477342944
+      bubble-box-96_4: 7874071598404860091
+      bubble-box-96_3: -579651799994828093
+      bubble-box-96_29: 6155978675153005751
+      bubble-box-96_6: -8674183035996338727
+      bubble-box-96_34: 3703243579030876292
+      bubble-box-96_13: 7159094295718383374
+      bubble-box-96_33: 7983617718701185365
+      bubble-box-96_35: -3479703862307417526
+      bubble-box-96_18: -3749514550213121934
+      bubble-box-96_10: 1219399356305507830
+      bubble-box-96_8: -7270594658898608730
+      bubble-box-96_24: -100468087841621182
+      bubble-box-96_1: 5650887805882164313
+      bubble-box-96_14: -4475654782092166701
+      bubble-box-96_19: -3544453707251485475
+      bubble-box-96_22: 6432310702318616632
+      bubble-box-96_23: 2440177619763553056
+      bubble-box-96_16: -6497428510489907957
+      bubble-box-96_15: -1568831057229810763
+      bubble-box-96_30: -2214618337452181531
+      bubble-box-96_17: 5157576860300258545
+      bubble-box-96_9: 542537091957551485
+      bubble-box-96_2: 8286437994321894111
+      bubble-box-96_21: 7206644402762433720
+      bubble-box-96_27: 980791604044426394
+      bubble-box-96_11: 2972828846854420737
+      bubble-box-96_25: 623385170871745531
+      bubble-box-96_31: 8155095193721313527
+      bubble-box-96_12: -6190450675618177396
+      bubble-box-96_20: 8819877430705659163
+      bubble-box-96_28: 7502829027820489193
+      bubble-box-96_32: -6583606811597671880
+      bubble-box-96_26: -9140206070629375232
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

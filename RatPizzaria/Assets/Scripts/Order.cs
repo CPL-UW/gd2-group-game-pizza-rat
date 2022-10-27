@@ -7,9 +7,9 @@ public class Order: MonoBehaviour {
 
     public enum OrderType
     {
-        CheesePizza,
-        MushroomPizza,
-        PepperoniPizza,
+        PepperoniMushroomGarlicPizza,
+        CheeseMushroomPepperoniPizza,
+        CheesePepperJalapenoPizza,
     }
 
     public OrderType orderType;
@@ -32,62 +32,37 @@ public class Order: MonoBehaviour {
 
         switch (orderType) {
             default:
-            case OrderType.CheesePizza:
-                itemList.Add(Item.ItemType.Cheese);
+            case OrderType.PepperoniMushroomGarlicPizza:
+                itemList.Add(Item.ItemType.Pepperoni);
+                itemList.Add(Item.ItemType.Mushroom);
+                itemList.Add(Item.ItemType.Garlic);
                 return itemList;
-            case OrderType.MushroomPizza:
+            case OrderType.CheeseMushroomPepperoniPizza:
                 itemList.Add(Item.ItemType.Cheese);
                 itemList.Add(Item.ItemType.Mushroom);
-                return itemList;
-            case OrderType.PepperoniPizza:
-                itemList.Add(Item.ItemType.Cheese);
                 itemList.Add(Item.ItemType.Pepperoni);
                 return itemList;
-        }
-    }
-
-    public string GetRecipeString() {
-        switch (orderType) {
-            default:
-            case OrderType.CheesePizza:
-                return "Cheese";
-            case OrderType.MushroomPizza:
-                return "Cheese, Mushroom";
-            case OrderType.PepperoniPizza:
-                return "Cheese, Pepperoni";
-        }
-    }
-
-    public string GetOrderString() {
-        switch (orderType) {
-            default:
-            case OrderType.CheesePizza:
-                return "Cheese Pizza";
-            case OrderType.MushroomPizza:
-                return "Mushroom Pizza";
-            case OrderType.PepperoniPizza:
-                return "Pepperoni Pizza";
+            case OrderType.CheesePepperJalapenoPizza:
+                itemList.Add(Item.ItemType.Cheese);
+                itemList.Add(Item.ItemType.Pepperoni);
+                itemList.Add(Item.ItemType.Jalapeno);
+                return itemList;
         }
     }
 
     public int GetOrderPoints() {
         switch (orderType) {
             default:
-            case OrderType.CheesePizza:
                 return 1;
-            case OrderType.MushroomPizza:
-                return 2;
-            case OrderType.PepperoniPizza:
-                return 2;
         }
     }
 
     public Sprite GetSprite() {
         switch (orderType) {
             default:
-            case OrderType.CheesePizza: return ImageAsset.Instance.cheesePizzaSprite;
-            case OrderType.MushroomPizza: return ImageAsset.Instance.mushroomPizzaSprite;
-            case OrderType.PepperoniPizza: return ImageAsset.Instance.pepperoniPizzaSprite;
+            case OrderType.PepperoniMushroomGarlicPizza: return ImageAsset.Instance.PepperoniMushroomGarlicPizzaSprite;
+            case OrderType.CheeseMushroomPepperoniPizza: return ImageAsset.Instance.CheeseMushroomPepperoniPizzaSprite;
+            case OrderType.CheesePepperJalapenoPizza: return ImageAsset.Instance.CheesePepperJalapenoPizzaSprite;
         }
     }
 }

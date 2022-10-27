@@ -14,7 +14,10 @@ public class ImageAsset : MonoBehaviour
     public Sprite cheeseSprite;
     public Sprite mushroomSprite;
     public Sprite pepperoniSprite;
-    public Sprite cheesePizzaSprite;
-    public Sprite mushroomPizzaSprite;
-    public Sprite pepperoniPizzaSprite;
+    public Sprite garlicSprite;
+    public Sprite jalapenoSprite;
+    public Sprite pepperSprite;
+    public Sprite PepperoniMushroomGarlicPizzaSprite;
+    public Sprite CheeseMushroomPepperoniPizzaSprite;
+    public Sprite CheesePepperJalapenoPizzaSprite;
 }
