@@ -14,6 +14,7 @@ public class GameControl : MonoBehaviour {
     public static int[] player2StartWaypoint = new int[] { 0, 9 };
 
     public static bool gameOver = false;
+    public static bool waitForDice = false;
     public Transform[][] waypoints;
 
     // Use this for initialization
@@ -50,19 +51,21 @@ public class GameControl : MonoBehaviour {
         foreach (Item.ItemType type in Enum.GetValues(typeof(Item.ItemType))){
             SpawnItemCollectable(type);
         }
+
+        waitForDice = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         // Determine when to stop
-        if (diceSideThrown == 0) {
+        if (diceSideThrown == 0 && !waitForDice) {
+            waitForDice = true;
             if (player1MoveText.activeSelf) {
                 player1.GetComponent<Player>().moveAllowed = false;
                 player1MoveText.gameObject.SetActive(false);
                 player2MoveText.gameObject.SetActive(true);
-            }
-            if (player2MoveText.activeSelf) {
+            } else {
                 player2.GetComponent<Player>().moveAllowed = false;
                 player2MoveText.gameObject.SetActive(false);
                 player1MoveText.gameObject.SetActive(true);
@@ -130,6 +133,7 @@ public class GameControl : MonoBehaviour {
                 player2.GetComponent<Player>().moveAllowed = true;
                 break;
         }
+        waitForDice = false;
     }
 
     public void SpawnItemCollectable(Item.ItemType type) {

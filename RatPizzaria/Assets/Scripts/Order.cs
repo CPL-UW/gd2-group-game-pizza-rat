@@ -44,7 +44,7 @@ public class Order: MonoBehaviour {
                 return itemList;
             case OrderType.CheesePepperJalapenoPizza:
                 itemList.Add(Item.ItemType.Cheese);
-                itemList.Add(Item.ItemType.Pepperoni);
+                itemList.Add(Item.ItemType.Pepper);
                 itemList.Add(Item.ItemType.Jalapeno);
                 return itemList;
         }
