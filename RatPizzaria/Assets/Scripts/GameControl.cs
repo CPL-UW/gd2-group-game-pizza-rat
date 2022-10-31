@@ -8,6 +8,7 @@ public class GameControl : MonoBehaviour {
     private static GameObject player1MoveText, player2MoveText;
     private static GameObject player1Points, player2Points;
     private static GameObject player1, player2;
+    private static GameObject dice;
 
     public static int diceSideThrown = 0;
     public static int[] player1StartWaypoint = new int[] { 0, 0 };
@@ -48,6 +49,8 @@ public class GameControl : MonoBehaviour {
         player1MoveText.gameObject.SetActive(true);
         player2MoveText.gameObject.SetActive(false);
 
+        dice = GameObject.Find("Dice");
+
         foreach (Item.ItemType type in Enum.GetValues(typeof(Item.ItemType))){
             SpawnItemCollectable(type);
         }
@@ -65,10 +68,12 @@ public class GameControl : MonoBehaviour {
                 player1.GetComponent<Player>().moveAllowed = false;
                 player1MoveText.gameObject.SetActive(false);
                 player2MoveText.gameObject.SetActive(true);
+                dice.GetComponent<Dice>().RefreshDiceNumber(player2.GetComponent<Player>().maxDice);
             } else {
                 player2.GetComponent<Player>().moveAllowed = false;
                 player2MoveText.gameObject.SetActive(false);
                 player1MoveText.gameObject.SetActive(true);
+                dice.GetComponent<Dice>().RefreshDiceNumber(player1.GetComponent<Player>().maxDice);
             }
         }
 
