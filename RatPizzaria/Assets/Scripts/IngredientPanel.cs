@@ -31,5 +31,7 @@ public class IngredientPanel : MonoBehaviour {
         if (!takeItem) return;
         player.GetInventory().AddItem(itemCollected.GetItem());
         itemCollected.DestroySelf();
+        //StartCoroutine(Replace());
+        
     }
 }

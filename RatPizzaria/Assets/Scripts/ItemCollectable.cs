@@ -28,7 +28,11 @@ public class ItemCollectable : MonoBehaviour {
 
     public void DestroySelf() {
         Destroy(gameObject);
+
+        Debug.Log("Start Turn: " + GameControl.turn);
         GameControl gc = GameObject.Find("GameControl").GetComponent<GameControl>();
         gc.SpawnItemCollectable(item.itemType);
     }
+
+
 }

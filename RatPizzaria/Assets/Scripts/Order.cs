@@ -22,8 +22,13 @@ public class Order: MonoBehaviour {
 
     private void CheckOrderStatus() {
         Player associatedPlayer = null;
-        if (transform.parent.parent.name.Contains("1")) associatedPlayer = GameObject.Find("Player1").GetComponent<Player>();
-        else associatedPlayer = GameObject.Find("Player2").GetComponent<Player>();
+        if (transform.parent.parent.parent.name.Contains("1")) {
+            associatedPlayer = GameObject.Find("Player1").GetComponent<Player>();
+            Debug.Log("1");
+        } else {
+            associatedPlayer = GameObject.Find("Player2").GetComponent<Player>();
+            Debug.Log("2");
+        }
         associatedPlayer.TryFullfillOrder(this);
     }
 

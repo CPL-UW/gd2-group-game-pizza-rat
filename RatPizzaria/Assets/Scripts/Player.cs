@@ -58,28 +58,28 @@ public class Player : MonoBehaviour {
     private void Move()
     {
         if (GameControl.diceSideThrown > 0) {
-            if (Input.GetKeyDown(KeyCode.W) && currIndex[0] > 0) { 
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currIndex[0] > 0) { 
                 Transform dest = waypoints[--currIndex[0]][currIndex[1]].transform;
                 while (transform.position != dest.position) {
                     transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
                 }
                 GameControl.diceSideThrown--;
             }
-            else if (Input.GetKeyDown(KeyCode.A) && currIndex[1] > 0) {
+            else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && currIndex[1] > 0) {
                 Transform dest = waypoints[currIndex[0]][--currIndex[1]].transform;
                 while (transform.position != dest.position) {
                     transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
                 }
                 GameControl.diceSideThrown--;
             }
-            else if (Input.GetKeyDown(KeyCode.S) && currIndex[0]+1 < waypoints.Length) {
+            else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && currIndex[0]+1 < waypoints.Length) {
                 Transform dest = waypoints[++currIndex[0]][currIndex[1]].transform;
                 while (transform.position != dest.position) {
                     transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
                 }
                 GameControl.diceSideThrown--;
             }
-            else if (Input.GetKeyDown(KeyCode.D) && currIndex[1] + 1 < waypoints[0].Length) {
+            else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && currIndex[1] + 1 < waypoints[0].Length) {
                 Transform dest = waypoints[currIndex[0]][++currIndex[1]].transform;
                 while (transform.position != dest.position) {
                     transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
@@ -113,18 +113,19 @@ public class Player : MonoBehaviour {
     public void TryFullfillOrder(Order order) {
         List<Item> items = inventory.GetItemList();
         List<Item.ItemType> recipe = order.GetRecipe();
+        int found = 0;
+        Debug.Log("RecipeLength: " + recipe.Count + " ItemLength: " + items.Count);
         foreach (Item.ItemType type in recipe) {
-            bool found = false;
             foreach (Item item in items) {
                 if (item.itemType.Equals(type)) {
-                    found = true;
+                    found++;
                     break;
                 }
             }
-            if (!found) {
-                Debug.Log("Unable to make this pizza!");
-                return;
-            }
+        }
+        if (found<3) {
+            Debug.Log("Unable to make this pizza! Found = " + found);
+            return;
         }
 
         Debug.Log("Ready to make pizza!");
