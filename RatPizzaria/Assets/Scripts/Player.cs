@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     private Inventory inventory;
     private UI_Inventory uiInventory;
     private TextMeshProUGUI statTextMeshPro;
+    private Text pointsTextBox;
     private int points = 0;
     private int power = 3;
     private Transform[][] waypoints;
@@ -20,7 +21,6 @@ public class Player : MonoBehaviour {
     [SerializeField] private float moveSpeed = 1f;
 
     [HideInInspector] public int waypointIndex = 0;
-    [HideInInspector] public Text textBox;
     [HideInInspector] public bool moveAllowed = false;
     [HideInInspector] public int maxDice = 4;
     [HideInInspector] public int inventoryLimit = 4;
@@ -41,12 +41,13 @@ public class Player : MonoBehaviour {
 
         uiInventory = uiInfo.Find("PlayerInventory").GetComponent<UI_Inventory>();
         inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+        uiInventory.SetInventory(inventory, this);
         uiInventory.CreateNewOrder();
         uiInventory.CreateNewOrder();
 
         statTextMeshPro = uiInfo.Find("Stat").Find("StatText").GetComponent<TextMeshProUGUI>();
-        RefreshPlayerStat();
+        pointsTextBox = uiInfo.Find("PlayerPoints").Find("PointText").GetComponent<Text>();
+        RefreshPlayerInfo();
     }
 
     // Update is called once per frame
@@ -90,24 +91,32 @@ public class Player : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        ItemCollectable itemCollectable = other.GetComponent<ItemCollectable>();
-        if (itemCollectable != null) {
+        if (other.GetComponent<ItemCollectable>() != null) {
+            ItemCollectable itemCollectable = other.GetComponent<ItemCollectable>();
             if (inventory.GetItemList().Count >= inventoryLimit) {
                 Debug.Log("You reach the inventory limit!");
                 return;
             }
-            Transform transform = GameObject.Find("Canvas").transform.Find("TakeIngredientPanel");
-            IngredientPanel panel = transform.GetComponent<IngredientPanel>();
-            panel.DisplayPanel(itemCollectable, this);
+            Transform transform = GameObject.Find("Canvas").transform.Find("Panel");
+            OptionPanel panel = transform.GetComponent<OptionPanel>();
+            panel.DisplayIngredientPanel(itemCollectable, this);
             //inventory.AddItem(itemCollectable.GetItem());
             //itemCollectable.DestroySelf();
         }
+
+        // TODO: Combat system
+        //if (other.GetComponent<Player>() != null) {
+        //    Transform transform = GameObject.Find("Canvas").transform.Find("Panel");
+        //    OptionPanel panel = transform.GetComponent<OptionPanel>();
+        //    panel.DisplayPlayerPanel(other.gameObject, this);
+        //}
     }
 
     public Inventory GetInventory() { return this.inventory; }
 
-    private void RefreshPlayerStat() {
-        statTextMeshPro.text = "Limit: " + inventoryLimit + " Power: " + power + " Dice: " + maxDice;
+    private void RefreshPlayerInfo() {
+        statTextMeshPro.text = "Limit: " + inventoryLimit + " Dice: " + maxDice;
+        pointsTextBox.text = "" + points;
     }
 
     public void TryFullfillOrder(Order order) {
@@ -138,8 +147,15 @@ public class Player : MonoBehaviour {
                 }
             }
         }
+        CompleteOrder(order);
+    }
+
+    private void CompleteOrder(Order order) {
         points += order.GetOrderPoints();
-        textBox.text = "" + points;
+        if (order.bonusType == Order.BonusType.IncreaseInventory) inventoryLimit++;
+        else if (order.bonusType == Order.BonusType.IncreaseDiceNumber) maxDice++;
+        RefreshPlayerInfo();
+
         uiInventory.CreateNewOrder(order);
     }
 }

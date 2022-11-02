@@ -12,23 +12,46 @@ public class Order: MonoBehaviour {
         CheesePepperJalapenoPizza,
     }
 
+    public enum BonusType {
+        IncreaseInventory,
+        IncreaseDiceNumber,
+        None,
+    }
+
     public OrderType orderType;
+    public BonusType bonusType;
     private Button button;
+    private Player associatedPlayer;
 
     private void Start() {
         button = gameObject.GetComponent<Button>();
         button.onClick.AddListener(CheckOrderStatus);
     }
 
-    private void CheckOrderStatus() {
-        Player associatedPlayer = null;
-        if (transform.parent.parent.parent.name.Contains("1")) {
-            associatedPlayer = GameObject.Find("Player1").GetComponent<Player>();
-            Debug.Log("1");
-        } else {
-            associatedPlayer = GameObject.Find("Player2").GetComponent<Player>();
-            Debug.Log("2");
+    public void SetOrderType(OrderType type) {
+        this.orderType = type;
+        SetBonusType();
+        gameObject.GetComponent<HoverTip>().tipToShow = GetBonusString();
+        gameObject.GetComponent<Image>().sprite = GetSprite();
+    }
+
+    private void SetBonusType() {
+        switch (orderType) {
+            case OrderType.CheesePepperJalapenoPizza:
+                bonusType = BonusType.IncreaseInventory;
+                break;
+            case OrderType.CheeseMushroomPepperoniPizza:
+                bonusType = BonusType.IncreaseDiceNumber;
+                break;
+            default:
+                bonusType = BonusType.None;
+                break;
         }
+    }
+
+    public void SetPlayer(Player player) { this.associatedPlayer = player; }
+
+    private void CheckOrderStatus() {
         associatedPlayer.TryFullfillOrder(this);
     }
 
@@ -56,7 +79,9 @@ public class Order: MonoBehaviour {
     }
 
     public int GetOrderPoints() {
-        switch (orderType) {
+        switch (bonusType) {
+            case BonusType.None:
+                return 2;
             default:
                 return 1;
         }
@@ -68,6 +93,17 @@ public class Order: MonoBehaviour {
             case OrderType.PepperoniMushroomGarlicPizza: return ImageAsset.Instance.PepperoniMushroomGarlicPizzaSprite;
             case OrderType.CheeseMushroomPepperoniPizza: return ImageAsset.Instance.CheeseMushroomPepperoniPizzaSprite;
             case OrderType.CheesePepperJalapenoPizza: return ImageAsset.Instance.CheesePepperJalapenoPizzaSprite;
+        }
+    }
+
+    public string GetBonusString() {
+        switch (bonusType) {
+            case BonusType.IncreaseInventory:
+                return "You can increase your inventory limit by ONE!";
+            case BonusType.IncreaseDiceNumber:
+                return "You can increase the maximum number of your dice ONE!";
+            default:
+                return "Special pizza that is worth 2 points!";
         }
     }
 }

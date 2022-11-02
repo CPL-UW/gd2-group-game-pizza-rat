@@ -18,6 +18,7 @@ public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
     private void ShowTip() {
+        if (tipToShow == null) return;
         HoverTipManager.OnMouseHover(tipToShow, Input.mousePosition);
     }
 

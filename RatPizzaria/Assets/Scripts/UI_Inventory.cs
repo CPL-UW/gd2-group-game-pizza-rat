@@ -10,6 +10,7 @@ public class UI_Inventory : MonoBehaviour {
     private Transform itemSlotTemplate;
     private Transform orderSlotContainer;
     private Transform orderSlotTemplate;
+    private Player associatedPlayer;
 
     private void Awake() {
         itemSlotContainer = transform.Find("ItemSlotContainer");
@@ -18,8 +19,9 @@ public class UI_Inventory : MonoBehaviour {
         orderSlotTemplate = orderSlotContainer.Find("OrderSlotTemplate");
     }
 
-    public void SetInventory(Inventory inventory) {
+    public void SetInventory(Inventory inventory, Player player) {
         this.inventory = inventory;
+        this.associatedPlayer = player;
 
         inventory.OnItemListChanged += Inventory_OnItemListChanged;
 
@@ -61,14 +63,12 @@ public class UI_Inventory : MonoBehaviour {
             float orderSlotCellSize = 60f;
             int x = orderSlotContainer.childCount - 1;
             newOrder = Instantiate(orderSlotTemplate, orderSlotContainer).GetComponent<Order>();
+            newOrder.SetPlayer(associatedPlayer);
+            newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(20 + x * orderSlotCellSize, -20);
             newOrder.gameObject.SetActive(true);
-            newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(20+x * orderSlotCellSize, -20);
         }
 
         Array types = Enum.GetValues(typeof(Order.OrderType));
-        newOrder.orderType = (Order.OrderType)types.GetValue(Random.Range(0, types.Length));
-        newOrder.GetComponent<Image>().sprite = newOrder.GetComponent<Order>().GetSprite();
-        //newOrder.GetComponent<HoverTip>().tipToShow = "<" + newOrder.GetOrderString() + ">\n" + newOrder.GetRecipeString();
-
+        newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(0, types.Length)));
     }
 }

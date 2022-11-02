@@ -164,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 28269482}
   - component: {fileID: 28269481}
+  - component: {fileID: 28269483}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: Untagged
@@ -191,13 +192,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28269480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9882728, y: 1.172479, z: -3.8134716}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &28269483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 28269480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b646341f62a984171bef55dac90fbf91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipText: {fileID: 374806462}
+  tipWindow: {fileID: 1901887972}
 --- !u!1 &32878536
 GameObject:
   m_ObjectHideFlags: 0
@@ -1270,7 +1285,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307665584
 MonoBehaviour:
@@ -1330,7 +1345,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1688,8 +1703,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2187,6 +2202,7 @@ GameObject:
   - component: {fileID: 564220156}
   - component: {fileID: 564220155}
   - component: {fileID: 564220154}
+  - component: {fileID: 564220158}
   m_Layer: 5
   m_Name: OrderSlotTemplate
   m_TagString: Untagged
@@ -2227,6 +2243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderType: 1
+  bonusType: 0
 --- !u!114 &564220155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,6 +2326,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564220152}
   m_CullTransparentMesh: 1
+--- !u!114 &564220158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564220152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8453ada258942ed8ed9c3f572288a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: 
 --- !u!1 &574210201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,8 +2424,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2092928076}
-        m_TargetAssemblyTypeName: IngredientPanel, Assembly-CSharp
-        m_MethodName: DecisionOnItem
+        m_TargetAssemblyTypeName: OptionPanel, Assembly-CSharp
+        m_MethodName: PlayerDesicion
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2671,7 +2701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Limit:0 Power:0 Dice:0
+  m_text: Limit:0 Dice:0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2705,7 +2735,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2806,7 +2836,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Limit:0 Power:0 Dice:0
+  m_text: Limit:0 Dice:0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2840,7 +2870,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4001,8 +4031,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2092928076}
-        m_TargetAssemblyTypeName: IngredientPanel, Assembly-CSharp
-        m_MethodName: DecisionOnItem
+        m_TargetAssemblyTypeName: OptionPanel, Assembly-CSharp
+        m_MethodName: PlayerDesicion
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4919,6 +4949,7 @@ GameObject:
   - component: {fileID: 1193147657}
   - component: {fileID: 1193147656}
   - component: {fileID: 1193147655}
+  - component: {fileID: 1193147659}
   m_Layer: 5
   m_Name: OrderSlotTemplate
   m_TagString: Untagged
@@ -4959,6 +4990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderType: 1
+  bonusType: 0
 --- !u!114 &1193147656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5041,6 +5073,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193147652}
   m_CullTransparentMesh: 1
+--- !u!114 &1193147659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193147652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8453ada258942ed8ed9c3f572288a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: 
 --- !u!1 &1203630202
 GameObject:
   m_ObjectHideFlags: 0
@@ -5053,7 +5098,7 @@ GameObject:
   - component: {fileID: 1203630205}
   - component: {fileID: 1203630204}
   m_Layer: 5
-  m_Name: IngredientImage
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5076,7 +5121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203630204
@@ -5526,7 +5571,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -65}
-  m_SizeDelta: {x: 130, y: 15}
+  m_SizeDelta: {x: 100, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1577860863
 MonoBehaviour:
@@ -6315,7 +6360,7 @@ GameObject:
   - component: {fileID: 1719063348}
   - component: {fileID: 1719063347}
   m_Layer: 5
-  m_Name: Player2Points
+  m_Name: PlayerPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37333,7 +37378,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -65}
-  m_SizeDelta: {x: 130, y: 15}
+  m_SizeDelta: {x: 100, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870782146
 MonoBehaviour:
@@ -37579,7 +37624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -540}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1901887973
@@ -37863,7 +37908,7 @@ GameObject:
   - component: {fileID: 2091030180}
   - component: {fileID: 2091030179}
   m_Layer: 5
-  m_Name: Player1Points
+  m_Name: PlayerPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37941,7 +37986,7 @@ GameObject:
   - component: {fileID: 2092928074}
   - component: {fileID: 2092928076}
   m_Layer: 5
-  m_Name: TakeIngredientPanel
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37984,7 +38029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8509804}
+  m_Color: {r: 0.8113208, g: 0.8113208, b: 0.8, a: 0.72156864}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38018,6 +38063,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2092928072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cbb9714b614e46138a0ca86b38c82a6, type: 3}
+  m_Script: {fileID: 11500000, guid: cc1110900911b4dddb6f361a7f47d8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
