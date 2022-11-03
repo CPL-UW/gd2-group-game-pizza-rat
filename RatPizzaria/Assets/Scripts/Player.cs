@@ -153,7 +153,7 @@ public class Player : MonoBehaviour {
     private void CompleteOrder(Order order) {
         points += order.GetOrderPoints();
         if (order.bonusType == Order.BonusType.IncreaseInventory) inventoryLimit++;
-        else if (order.bonusType == Order.BonusType.IncreaseDiceNumber) maxDice++;
+        else if (order.bonusType == Order.BonusType.IncreaseDiceNumber) maxDice = Mathf.Min(maxDice+1, 6);
         RefreshPlayerInfo();
 
         uiInventory.CreateNewOrder(order);
