@@ -31,7 +31,7 @@ public class ItemCollectable : MonoBehaviour {
 
         Debug.Log("Start Turn: " + GameControl.turn);
         GameControl gc = GameObject.Find("GameControl").GetComponent<GameControl>();
-        gc.SpawnItemCollectable(item.itemType);
+        gc.DecreaseIngredientCount(item.itemType);
     }
 
 

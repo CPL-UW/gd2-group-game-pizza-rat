@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -8,6 +10,7 @@ public class GameControl : MonoBehaviour {
     private static GameObject player1MoveText, player2MoveText;
     private static GameObject player1, player2;
     private static GameObject dice;
+    private Dictionary<Item.ItemType, int[]> ingredientsDict;
 
     public static int diceSideThrown = 0;
     public static int turn = 0;
@@ -44,9 +47,8 @@ public class GameControl : MonoBehaviour {
 
         dice = GameObject.Find("Dice");
 
-        foreach (Item.ItemType type in Enum.GetValues(typeof(Item.ItemType))){
-            SpawnItemCollectable(type);
-        }
+        ingredientsDict = new Dictionary<Item.ItemType, int[]>();
+        SpawnItemCollectable();
 
         waitForDice = true;
     }
@@ -54,7 +56,7 @@ public class GameControl : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        // Determine when to stop
+        if (waitForDice) SpawnItemCollectable();
         if (diceSideThrown == 0 && !waitForDice) {
             waitForDice = true;
             if (player1MoveText.activeSelf) {
@@ -135,9 +137,37 @@ public class GameControl : MonoBehaviour {
         waitForDice = false;
     }
 
-    public void SpawnItemCollectable(Item.ItemType type) {
-        int x = Random.Range(0, waypoints.Length);
-        int y = Random.Range(0, waypoints[0].Length);
-        ItemCollectable.SpawnItemCollectable(waypoints[x][y].position, new Item { itemType = type, amount = 1 });
+    public void DecreaseIngredientCount(Item.ItemType type) {
+        ingredientsDict.Remove(type);
+    }
+
+    private void SpawnItemCollectable() {
+        Array typeList = Enum.GetValues(typeof(Item.ItemType));
+        for (int i=0; i< typeList.Length; i++) {
+            Item.ItemType type = (Item.ItemType)typeList.GetValue(i);
+            if (!ingredientsDict.ContainsKey(type)) {
+                int x = Random.Range(0, waypoints.Length);
+                int y = Random.Range(0, waypoints[0].Length);
+                while (!checkPosOverlay(x, y)) {
+                    x = Random.Range(0, waypoints.Length);
+                    y = Random.Range(0, waypoints[0].Length);
+                }
+                ItemCollectable.SpawnItemCollectable(waypoints[x][y].position,
+                    new Item { itemType = type, amount = 1 });
+                ingredientsDict.Add(type, new int[] { x, y });
+            }
+        }
+    }
+
+    private bool checkPosOverlay(int x, int y) {
+        int[] playerPos = player1.GetComponent<Player>().currIndex;
+        if (x == playerPos[0] && y == playerPos[1]) return false;
+        playerPos = player2.GetComponent<Player>().currIndex;
+        if (x == playerPos[0] && y == playerPos[1]) return false;
+
+        foreach (int[] pos in ingredientsDict.Values) {
+            if (x == pos[0] && y == pos[1]) return false;
+        }
+        return true;
     }
 }
