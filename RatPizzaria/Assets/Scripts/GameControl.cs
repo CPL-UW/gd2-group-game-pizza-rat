@@ -13,10 +13,10 @@ public class GameControl : MonoBehaviour {
     private Dictionary<Item.ItemType, int[]> ingredientsDict;
 
     public static int diceSideThrown = 0;
-    public static int turn = 0;
     public static int[] player1StartWaypoint = new int[] { 0, 0 };
     public static int[] player2StartWaypoint = new int[] { 0, 9 };
 
+    public static GameObject whosTurn = player1;
     public static bool gameOver = false;
     public static bool waitForDice = false;
     public Transform[][] waypoints;
@@ -63,13 +63,11 @@ public class GameControl : MonoBehaviour {
                 player1.GetComponent<Player>().moveAllowed = false;
                 player1MoveText.gameObject.SetActive(false);
                 player2MoveText.gameObject.SetActive(true);
-                turn++;
                 dice.GetComponent<Dice>().RefreshDiceNumber(player2.GetComponent<Player>().maxDice);
             } else {
                 player2.GetComponent<Player>().moveAllowed = false;
                 player2MoveText.gameObject.SetActive(false);
                 player1MoveText.gameObject.SetActive(true);
-                turn++;
                 dice.GetComponent<Dice>().RefreshDiceNumber(player1.GetComponent<Player>().maxDice);
             }
         }
@@ -128,9 +126,11 @@ public class GameControl : MonoBehaviour {
     {
         switch (playerToMove) { 
             case 1:
+                whosTurn = player1;
                 player1.GetComponent<Player>().moveAllowed = true;
                 break;
             case 2:
+                whosTurn = player2;
                 player2.GetComponent<Player>().moveAllowed = true;
                 break;
         }

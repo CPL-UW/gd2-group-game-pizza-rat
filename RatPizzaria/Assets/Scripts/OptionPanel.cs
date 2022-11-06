@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,26 +7,16 @@ using UnityEngine.UI;
 public class OptionPanel : MonoBehaviour {
 
     private ItemCollectable itemCollected;
-    private GameObject opponent;
+    private Player opponent;
     private Player player;
-    private PanelType panelType;
-    private Transform ingredientImage;
-    private Transform itemText;
-    private Transform buttonTemplate;
-
-    public enum PanelType {
-        IngredientPanel,
-        CombatPanel,
-    }
 
     public void DisplayIngredientPanel(ItemCollectable itemCollected, Player player) {
         gameObject.SetActive(true);
-        ingredientImage = transform.Find("Image");
-        itemText = transform.Find("Text");
-        buttonTemplate = transform.Find("Button");
+        Transform ingredientImage = transform.Find("Image");
+        Transform itemText = transform.Find("Text");
+        Transform buttonTemplate = transform.Find("Button");
         buttonTemplate.gameObject.SetActive(false);
 
-        panelType = PanelType.IngredientPanel;
         this.itemCollected = itemCollected;
         this.player = player;
 
@@ -47,14 +38,74 @@ public class OptionPanel : MonoBehaviour {
         buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
-    public void DisplayPlayerPanel(GameObject opponent, Player player) {
-        this.opponent = opponent;
-        this.player = player;
-        ingredientImage.GetComponent<Image>().sprite = opponent.GetComponent<SpriteRenderer>().sprite;
-        itemText.GetComponent<TextMeshProUGUI>().text = "Fight with your opponent?\n" +
-            "You may have a chance to steal his ingredient!";
-        panelType = PanelType.CombatPanel;
+    public void DisplayOpponentPanel(GameObject opponent, Player player) {
         gameObject.SetActive(true);
+        Transform ingredientImage = transform.Find("Image");
+        Transform itemText = transform.Find("Text");
+        Transform buttonTemplate = transform.Find("Button");
+        buttonTemplate.gameObject.SetActive(false);
+
+        this.opponent = opponent.GetComponent<Player>();
+        this.player = player;
+
+        ingredientImage.GetComponent<Image>().sprite = opponent.GetComponent<SpriteRenderer>().sprite;
+        itemText.GetComponent<TextMeshProUGUI>().text = "You ran into another rat!\n" + 
+            "Do you want to start a fight to win his ingredients?";
+
+        Transform buttonTrans = Instantiate(buttonTemplate, transform);
+        buttonTrans.gameObject.SetActive(true);
+        buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50);
+        buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = "Yes";
+        buttonTrans.GetComponent<Button>().onClick.AddListener(() => FightOpponent(this, this.opponent, player));
+
+        Transform buttonTrans2 = Instantiate(buttonTemplate, transform);
+        buttonTrans2.gameObject.SetActive(true);
+        buttonTrans2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -100);
+        buttonTrans2.Find("Text").GetComponent<TextMeshProUGUI>().text = "No";
+        buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
+    }
+
+    private void DisplayOpponentIngredientPanel(Player opponent, Player player) {
+        gameObject.SetActive(true);
+        Transform ingredientImage = transform.Find("Image");
+        Transform itemText = transform.Find("Text");
+        Transform buttonTemplate = transform.Find("Button");
+        buttonTemplate.gameObject.SetActive(false);
+
+        this.opponent = opponent.GetComponent<Player>();
+        this.player = player;
+
+        ingredientImage.GetComponent<Image>().sprite = opponent.GetComponent<SpriteRenderer>().sprite;
+        itemText.GetComponent<TextMeshProUGUI>().text = "You won!\n" +
+            "Choose one of his ingredients to steal!";
+
+        HashSet<Item.ItemType> set = new HashSet<Item.ItemType>();
+        int y = 1;
+        foreach (Item item in opponent.GetInventory().GetItemList()) {
+            if (set.Contains(item.itemType)) continue;
+            set.Add(item.itemType);
+
+            Transform buttonTrans = Instantiate(buttonTemplate, transform);
+            buttonTrans.gameObject.SetActive(true);
+            buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50*y++);
+            buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = item.itemType.ToString();
+            buttonTrans.GetComponent<Button>().onClick.AddListener(() => StealIngredient(this.player, this.opponent, item));
+        }
+    }
+
+    private void StealIngredient(Player player, Player opponent, Item item) {
+        opponent.GetInventory().Remove(item);
+        player.GetInventory().AddItem(item);
+        CloseWindow();
+    }
+
+    private void FightOpponent(OptionPanel prevPanel, Player opponent, Player player) {
+        prevPanel.CloseWindow();
+
+        Transform canvas = GameObject.Find("Canvas").transform;
+        Transform panelTemplate = canvas.Find("Panel");
+        OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
+        panel.DisplayOpponentIngredientPanel(opponent, player);
     }
 
     private void TakeIngredient() {
