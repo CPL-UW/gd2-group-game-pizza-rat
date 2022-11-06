@@ -11,27 +11,40 @@ public class OptionPanel : MonoBehaviour {
     private PanelType panelType;
     private Transform ingredientImage;
     private Transform itemText;
+    private Transform buttonTemplate;
 
     public enum PanelType {
         IngredientPanel,
         CombatPanel,
     }
 
-    void Start() {
+    public void DisplayIngredientPanel(ItemCollectable itemCollected, Player player) {
+        gameObject.SetActive(true);
         ingredientImage = transform.Find("Image");
         itemText = transform.Find("Text");
-        gameObject.SetActive(false);
-    }
+        buttonTemplate = transform.Find("Button");
+        buttonTemplate.gameObject.SetActive(false);
 
-    public void DisplayIngredientPanel(ItemCollectable itemCollected, Player player) {
+        panelType = PanelType.IngredientPanel;
         this.itemCollected = itemCollected;
         this.player = player;
+
         ingredientImage.GetComponent<Image>().sprite = itemCollected.GetItem().GetSprite();
         itemText.GetComponent<TextMeshProUGUI>().text = "Take the ingredient or not?\nYou currently have [" +
             player.GetInventory().GetItemList().Count + " / " +
             player.inventoryLimit + "] items in your inventory.";
-        panelType = PanelType.IngredientPanel;
-        gameObject.SetActive(true);
+
+        Transform buttonTrans = Instantiate(buttonTemplate, transform);
+        buttonTrans.gameObject.SetActive(true);
+        buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50);
+        buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = "Yes";
+        buttonTrans.GetComponent<Button>().onClick.AddListener(TakeIngredient);
+
+        Transform buttonTrans2 = Instantiate(buttonTemplate, transform);
+        buttonTrans2.gameObject.SetActive(true);
+        buttonTrans2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -100);
+        buttonTrans2.Find("Text").GetComponent<TextMeshProUGUI>().text = "No";
+        buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
     public void DisplayPlayerPanel(GameObject opponent, Player player) {
@@ -44,17 +57,13 @@ public class OptionPanel : MonoBehaviour {
         gameObject.SetActive(true);
     }
 
-    public void PlayerDesicion(bool consent) {
-        gameObject.SetActive(false);
-        if (!consent) return;
-        switch (panelType) {
-            case PanelType.IngredientPanel:
-                player.GetInventory().AddItem(itemCollected.GetItem());
-                itemCollected.DestroySelf();
-                return;
-            case PanelType.CombatPanel:
-                return;
-        }
+    private void TakeIngredient() {
+        player.GetInventory().AddItem(itemCollected.GetItem());
+        itemCollected.DestroySelf();
+        CloseWindow();
+    }
 
+    private void CloseWindow() {
+        Destroy(gameObject);
     }
 }

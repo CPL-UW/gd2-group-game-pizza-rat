@@ -97,8 +97,9 @@ public class Player : MonoBehaviour {
                 Debug.Log("You reach the inventory limit!");
                 return;
             }
-            Transform transform = GameObject.Find("Canvas").transform.Find("Panel");
-            OptionPanel panel = transform.GetComponent<OptionPanel>();
+            Transform canvas = GameObject.Find("Canvas").transform;
+            Transform panelTemplate = canvas.Find("Panel");
+            OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
             panel.DisplayIngredientPanel(itemCollectable, this);
             //inventory.AddItem(itemCollectable.GetItem());
             //itemCollectable.DestroySelf();
