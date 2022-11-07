@@ -753,7 +753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 67}
+  m_AnchoredPosition: {x: 1.9491882, y: 110.42882}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1002939762
@@ -914,8 +914,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1014443429}
-  - component: {fileID: 1014443431}
-  - component: {fileID: 1014443430}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -946,48 +944,6 @@ RectTransform:
   m_AnchoredPosition: {x: 8.3676, y: -29.1512}
   m_SizeDelta: {x: 533.2564, y: 361.5244}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1014443430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014443428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 
---- !u!222 &1014443431
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014443428}
-  m_CullTransparentMesh: 1
 --- !u!1 &1186452009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.824402, y: -174.33}
+  m_AnchoredPosition: {x: -6, y: -193}
   m_SizeDelta: {x: 180.8325, y: 68.0882}
   m_Pivot: {x: 0.5263191, y: 0.5}
 --- !u!114 &1666451378
@@ -1517,12 +1473,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Each turn, players first roll to determine how many moves they can make.
-    They may then use WASD or arrow keys to use their moves in any direction(s) desired.
-    \nPlayers can choose to collect any ingredients that they come across; but be
-    careful, inventory space is limited!\nIf you have all of the ingredients for
-    an order, click on the order card to complete it and gain a stat upgrade!\nThe
-    Player with the most points from completed orders wins!\n"
+  m_text: "In a player\u2019s turn, he should first row the dice to determine how
+    many moves he can make.\nMake any moves within the number the player just rolled.\nIf
+    lands on a space with ingredients in it, the player can decide if he wants to
+    collect it.\nInventory size would deter someone from collecting.\nThe player
+    who fulfills the most orders wins at the end.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1549,8 +1504,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
