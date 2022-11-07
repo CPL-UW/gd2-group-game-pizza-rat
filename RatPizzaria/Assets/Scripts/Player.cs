@@ -97,19 +97,20 @@ public class Player : MonoBehaviour {
                 Debug.Log("You reach the inventory limit!");
                 return;
             }
-            Transform transform = GameObject.Find("Canvas").transform.Find("Panel");
-            OptionPanel panel = transform.GetComponent<OptionPanel>();
+            Transform canvas = GameObject.Find("Canvas").transform;
+            Transform panelTemplate = canvas.Find("Panel");
+            OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
             panel.DisplayIngredientPanel(itemCollectable, this);
-            //inventory.AddItem(itemCollectable.GetItem());
-            //itemCollectable.DestroySelf();
         }
 
-        // TODO: Combat system
-        //if (other.GetComponent<Player>() != null) {
-        //    Transform transform = GameObject.Find("Canvas").transform.Find("Panel");
-        //    OptionPanel panel = transform.GetComponent<OptionPanel>();
-        //    panel.DisplayPlayerPanel(other.gameObject, this);
-        //}
+        if (other.GetComponent<Player>() != null) {
+            if (GameControl.whosTurn == gameObject) {
+                Transform canvas = GameObject.Find("Canvas").transform;
+                Transform panelTemplate = canvas.Find("Panel");
+                OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
+                panel.DisplayOpponentPanel(other.gameObject, this);
+            }
+        }
     }
 
     public Inventory GetInventory() { return this.inventory; }
