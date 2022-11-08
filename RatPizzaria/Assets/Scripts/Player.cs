@@ -15,7 +15,6 @@ public class Player : MonoBehaviour {
     private TextMeshProUGUI statTextMeshPro;
     private Text pointsTextBox;
     private int points = 0;
-    private int power = 3;
     private Transform[][] waypoints;
 
     [SerializeField] private float moveSpeed = 1f;
@@ -24,6 +23,7 @@ public class Player : MonoBehaviour {
     [HideInInspector] public bool moveAllowed = false;
     [HideInInspector] public int maxDice = 4;
     [HideInInspector] public int inventoryLimit = 4;
+    [HideInInspector] public int strength = 1;
 
     // Use this for initialization
     private void Start() {
@@ -116,7 +116,8 @@ public class Player : MonoBehaviour {
     public Inventory GetInventory() { return this.inventory; }
 
     private void RefreshPlayerInfo() {
-        statTextMeshPro.text = "Limit: " + inventoryLimit + " Dice: " + maxDice;
+        statTextMeshPro.text = "Limit: " + inventoryLimit + " Dice: " + maxDice
+            + " Strength: " + strength;
         pointsTextBox.text = "" + points;
     }
 
@@ -154,6 +155,7 @@ public class Player : MonoBehaviour {
     private void CompleteOrder(Order order) {
         points += order.GetOrderPoints();
         if (order.bonusType == Order.BonusType.IncreaseInventory) inventoryLimit++;
+        else if (order.bonusType == Order.BonusType.IncreaseStrength) strength++;
         else if (order.bonusType == Order.BonusType.IncreaseDiceNumber) maxDice = Mathf.Min(maxDice+1, 6);
         RefreshPlayerInfo();
 

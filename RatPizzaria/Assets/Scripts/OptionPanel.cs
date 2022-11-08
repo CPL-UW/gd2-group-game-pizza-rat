@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class OptionPanel : MonoBehaviour {
 
@@ -65,7 +66,23 @@ public class OptionPanel : MonoBehaviour {
         buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
-    private void DisplayOpponentIngredientPanel(Player opponent, Player player) {
+    private void DisplayLosingPanel(Player opponent, Player player) {
+        gameObject.SetActive(true);
+        Transform ingredientImage = transform.Find("Image");
+        Transform itemText = transform.Find("Text");
+        Transform buttonTemplate = transform.Find("Button");
+        buttonTemplate.Find("Text").GetComponent<TextMeshProUGUI>().text = "OK";
+        buttonTemplate.GetComponent<Button>().onClick.AddListener(CloseWindow);
+
+        this.opponent = opponent.GetComponent<Player>();
+        this.player = player;
+
+        ingredientImage.GetComponent<Image>().sprite = opponent.GetComponent<SpriteRenderer>().sprite;
+        itemText.GetComponent<TextMeshProUGUI>().text = "You tried to sneak up on your opponent, " +
+            "but he spotted you right away... No one wins and nothing happens!";
+    }
+
+        private void DisplayWinningPanel(Player opponent, Player player) {
         gameObject.SetActive(true);
         Transform ingredientImage = transform.Find("Image");
         Transform itemText = transform.Find("Text");
@@ -105,7 +122,9 @@ public class OptionPanel : MonoBehaviour {
         Transform canvas = GameObject.Find("Canvas").transform;
         Transform panelTemplate = canvas.Find("Panel");
         OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
-        panel.DisplayOpponentIngredientPanel(opponent, player);
+
+        if (player.strength > opponent.strength) panel.DisplayWinningPanel(opponent, player);
+        else panel.DisplayLosingPanel(opponent, player);
     }
 
     private void TakeIngredient() {

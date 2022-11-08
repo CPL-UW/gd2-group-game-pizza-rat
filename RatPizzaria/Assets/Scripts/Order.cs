@@ -15,6 +15,7 @@ public class Order: MonoBehaviour {
     public enum BonusType {
         IncreaseInventory,
         IncreaseDiceNumber,
+        IncreaseStrength,
         None,
     }
 
@@ -42,6 +43,9 @@ public class Order: MonoBehaviour {
                 break;
             case OrderType.CheeseMushroomPepperoniPizza:
                 bonusType = BonusType.IncreaseDiceNumber;
+                break;
+            case OrderType.PepperoniMushroomGarlicPizza:
+                bonusType = BonusType.IncreaseStrength;
                 break;
             default:
                 bonusType = BonusType.None;
@@ -99,9 +103,11 @@ public class Order: MonoBehaviour {
     public string GetBonusString() {
         switch (bonusType) {
             case BonusType.IncreaseInventory:
-                return "You can increase your inventory limit by ONE!";
+                return "You may increase your inventory limit!";
             case BonusType.IncreaseDiceNumber:
-                return "You can increase the maximum number of your dice ONE!";
+                return "You may upgrade your dice!";
+            case BonusType.IncreaseStrength:
+                return "You may increase your strength!";
             default:
                 return "Special pizza that is worth 2 points!";
         }
