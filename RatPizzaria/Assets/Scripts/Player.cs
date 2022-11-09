@@ -116,7 +116,7 @@ public class Player : MonoBehaviour {
     public Inventory GetInventory() { return this.inventory; }
 
     private void RefreshPlayerInfo() {
-        statTextMeshPro.text = "Limit: " + inventoryLimit + " Dice: " + maxDice;
+        statTextMeshPro.text = "Inventory: " + inventoryLimit + " Max Roll: " + maxDice;
         pointsTextBox.text = "" + points;
     }
 

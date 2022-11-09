@@ -13,6 +13,7 @@ public class GameControl : MonoBehaviour {
     private Dictionary<Item.ItemType, int[]> ingredientsDict;
 
     public static int diceSideThrown = 0;
+    public static int turn = 0;
     public static int[] player1StartWaypoint = new int[] { 0, 0 };
     public static int[] player2StartWaypoint = new int[] { 0, 9 };
 
@@ -59,6 +60,7 @@ public class GameControl : MonoBehaviour {
         if (waitForDice) SpawnItemCollectable();
         if (diceSideThrown == 0 && !waitForDice) {
             waitForDice = true;
+            turn++;
             if (player1MoveText.activeSelf) {
                 player1.GetComponent<Player>().moveAllowed = false;
                 player1MoveText.gameObject.SetActive(false);
@@ -142,6 +144,7 @@ public class GameControl : MonoBehaviour {
     }
 
     private void SpawnItemCollectable() {
+        if (turn%5 != 0) return;
         Array typeList = Enum.GetValues(typeof(Item.ItemType));
         for (int i=0; i< typeList.Length; i++) {
             Item.ItemType type = (Item.ItemType)typeList.GetValue(i);

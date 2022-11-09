@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random=System.Random;
 
 public class OptionPanel : MonoBehaviour {
 
@@ -50,7 +51,7 @@ public class OptionPanel : MonoBehaviour {
 
         ingredientImage.GetComponent<Image>().sprite = opponent.GetComponent<SpriteRenderer>().sprite;
         itemText.GetComponent<TextMeshProUGUI>().text = "You ran into another rat!\n" + 
-            "Do you want to start a fight to win his ingredients?";
+            "Do you want to start a fight to win their ingredients?";
 
         Transform buttonTrans = Instantiate(buttonTemplate, transform);
         buttonTrans.gameObject.SetActive(true);
@@ -74,10 +75,17 @@ public class OptionPanel : MonoBehaviour {
 
         this.opponent = opponent.GetComponent<Player>();
         this.player = player;
+        string name = player.ToString().Substring(0,7);
+        string loser = opponent.ToString().Substring(0,7);
 
         ingredientImage.GetComponent<Image>().sprite = opponent.GetComponent<SpriteRenderer>().sprite;
-        itemText.GetComponent<TextMeshProUGUI>().text = "You won!\n" +
-            "Choose one of his ingredients to steal!";
+        // check if there are ingredients to take
+        if (opponent.GetInventory().GetItemList().Count == 0) {
+            itemText.GetComponent<TextMeshProUGUI>().text = name + " wins, but " + loser + " has no ingredients to steal!";
+        } else {
+            itemText.GetComponent<TextMeshProUGUI>().text = name + " wins!\n" +
+                name + ", choose one of your opponent's ingredients to steal!";
+        }
 
         HashSet<Item.ItemType> set = new HashSet<Item.ItemType>();
         int y = 1;
@@ -91,6 +99,13 @@ public class OptionPanel : MonoBehaviour {
             buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = item.itemType.ToString();
             buttonTrans.GetComponent<Button>().onClick.AddListener(() => StealIngredient(this.player, this.opponent, item));
         }
+
+        //exit button
+        Transform exitButton = Instantiate(buttonTemplate, transform);
+        exitButton.gameObject.SetActive(true);
+        exitButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50*y++);
+        exitButton.Find("Text").GetComponent<TextMeshProUGUI>().text = "Exit";
+        exitButton.GetComponent<Button>().onClick.AddListener(() => CloseWindow());
     }
 
     private void StealIngredient(Player player, Player opponent, Item item) {
@@ -105,7 +120,16 @@ public class OptionPanel : MonoBehaviour {
         Transform canvas = GameObject.Find("Canvas").transform;
         Transform panelTemplate = canvas.Find("Panel");
         OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
-        panel.DisplayOpponentIngredientPanel(opponent, player);
+
+        Random rand = new Random();
+        int f = rand.Next(0, 1);
+        if (f == 0) {
+            //attacker wins
+            panel.DisplayOpponentIngredientPanel(opponent, player);
+        } else {
+            //defender wins
+            panel.DisplayOpponentIngredientPanel(player, opponent);
+        }
     }
 
     private void TakeIngredient() {
