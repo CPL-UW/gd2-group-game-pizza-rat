@@ -7,7 +7,7 @@ public class Order: MonoBehaviour {
 
     public enum OrderType
     {
-        PepperoniMushroomGarlicPizza,
+        PepperoniMushroomOnionPizza,
         CheeseMushroomPepperoniPizza,
         CheesePepperJalapenoPizza,
     }
@@ -44,7 +44,7 @@ public class Order: MonoBehaviour {
             case OrderType.CheeseMushroomPepperoniPizza:
                 bonusType = BonusType.IncreaseDiceNumber;
                 break;
-            case OrderType.PepperoniMushroomGarlicPizza:
+            case OrderType.PepperoniMushroomOnionPizza:
                 bonusType = BonusType.IncreaseStrength;
                 break;
             default:
@@ -64,10 +64,10 @@ public class Order: MonoBehaviour {
 
         switch (orderType) {
             default:
-            case OrderType.PepperoniMushroomGarlicPizza:
+            case OrderType.PepperoniMushroomOnionPizza:
                 itemList.Add(Item.ItemType.Pepperoni);
                 itemList.Add(Item.ItemType.Mushroom);
-                itemList.Add(Item.ItemType.Garlic);
+                itemList.Add(Item.ItemType.Onion);
                 return itemList;
             case OrderType.CheeseMushroomPepperoniPizza:
                 itemList.Add(Item.ItemType.Cheese);
@@ -94,7 +94,7 @@ public class Order: MonoBehaviour {
     public Sprite GetSprite() {
         switch (orderType) {
             default:
-            case OrderType.PepperoniMushroomGarlicPizza: return ImageAsset.Instance.PepperoniMushroomGarlicPizzaSprite;
+            case OrderType.PepperoniMushroomOnionPizza: return ImageAsset.Instance.PepperoniMushroomOnionPizzaSprite;
             case OrderType.CheeseMushroomPepperoniPizza: return ImageAsset.Instance.CheeseMushroomPepperoniPizzaSprite;
             case OrderType.CheesePepperJalapenoPizza: return ImageAsset.Instance.CheesePepperJalapenoPizzaSprite;
         }

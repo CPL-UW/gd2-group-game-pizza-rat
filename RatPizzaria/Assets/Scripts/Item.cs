@@ -8,7 +8,7 @@ public class Item
         Cheese,
         Mushroom,
         Pepperoni,
-        Garlic,
+        Onion,
         Jalapeno,
         Pepper,
     }
@@ -22,7 +22,7 @@ public class Item
             case ItemType.Cheese: return ImageAsset.Instance.cheeseSprite;
             case ItemType.Mushroom: return ImageAsset.Instance.mushroomSprite;
             case ItemType.Pepperoni: return ImageAsset.Instance.pepperoniSprite;
-            case ItemType.Garlic: return ImageAsset.Instance.garlicSprite;
+            case ItemType.Onion: return ImageAsset.Instance.onionSprite;
             case ItemType.Jalapeno: return ImageAsset.Instance.jalapenoSprite;
             case ItemType.Pepper: return ImageAsset.Instance.pepperSprite;
         }
