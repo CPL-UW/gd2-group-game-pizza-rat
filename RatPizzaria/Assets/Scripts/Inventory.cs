@@ -25,4 +25,8 @@ public class Inventory {
     public List<Item> GetItemList() {
         return itemList;
     }
+
+    public void SetItemList(List<Item> list) {
+        this.itemList = list;
+    }
 }

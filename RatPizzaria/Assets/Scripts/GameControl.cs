@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -17,9 +20,10 @@ public class GameControl : MonoBehaviour {
     public static int[] player2StartWaypoint = new int[] { 0, 9 };
 
     public static GameObject whosTurn = player1;
-    public static bool gameOver = false;
     public static bool waitForDice = false;
+    public static bool gameOver = false;
     public Transform[][] waypoints;
+    public Transform winningPanel;
 
     // Use this for initialization
     void Start () {
@@ -72,55 +76,30 @@ public class GameControl : MonoBehaviour {
             }
         }
 
-        //if (reachDest(player1.GetComponent<Player>().waypointIndex,
-        //    player1StartWaypoint, diceSideThrown))
-        //{
-        //    player1.GetComponent<Player>().moveAllowed = false;
-        //    player1MoveText.gameObject.SetActive(false);
-        //    player2MoveText.gameObject.SetActive(true);
-        //    player1StartWaypoint = player1.GetComponent<Player>().waypointIndex - 1;
-        //    //if (player1StartWaypoint == -1) player1StartWaypoint = waypoints.Length - 1;
-        //}
-
-        //if (reachDest(player2.GetComponent<Player>().waypointIndex,
-        //    player2StartWaypoint, diceSideThrown))
-        //{
-        //    player2.GetComponent<Player>().moveAllowed = false;
-        //    player2MoveText.gameObject.SetActive(false);
-        //    player1MoveText.gameObject.SetActive(true);
-        //    player2StartWaypoint = player2.GetComponent<Player>().waypointIndex - 1;
-        //    //if (player2StartWaypoint == -1) player2StartWaypoint = waypoints.Length - 1;
-        //}
-
         // Determind if the game ends
-        //if (player1.GetComponent<FollowThePath>().waypointIndex == 
-        //    player1.GetComponent<FollowThePath>().waypoints.Length)
-        //{
-        //    whoWinsText.gameObject.SetActive(true);
-        //    player1MoveText.gameObject.SetActive(false);
-        //    player2MoveText.gameObject.SetActive(false);
-        //    whoWinsText.GetComponent<Text>().text = "Player 1 Wins";
-        //    gameOver = true;
-        //}
-
-        //if (player2.GetComponent<FollowThePath>().waypointIndex ==
-        //    player2.GetComponent<FollowThePath>().waypoints.Length)
-        //{
-        //    whoWinsText.gameObject.SetActive(true);
-        //    player1MoveText.gameObject.SetActive(false);
-        //    player2MoveText.gameObject.SetActive(false);
-        //    whoWinsText.GetComponent<Text>().text = "Player 2 Wins";
-        //    gameOver = true;
-        //}
+        if (player1.GetComponent<Player>().points >= 5) {
+            endGame(player1);
+        }
+        else if (player2.GetComponent<Player>().points >= 5) {
+            endGame(player2);
+        }
     }
 
-    //private bool reachDest(int[] nextMoveIndex, int[] startIndex, int[] dist) {
-    //    int currIndex = nextMoveIndex - 1;
-    //    if (currIndex == -1) currIndex = waypoints.Length - 1;
+    void Restart() {
+        SceneManager.LoadScene("Menu");
+    }
 
-    //    if (currIndex == (startIndex + dist) % waypoints.Length) return true;
-    //    return false;
-    //}
+    private void endGame(GameObject winner) {
+        gameOver = true;
+        winningPanel.gameObject.SetActive(true);
+        winningPanel.Find("Text").GetComponent<TextMeshProUGUI>().text = "Congrats!\n" + winner.name + " Won!";
+        winningPanel.Find("Image").GetComponent<Image>().sprite = winner.GetComponent<SpriteRenderer>().sprite;
+        player1.gameObject.SetActive(false);
+        player2.gameObject.SetActive(false);
+        player1MoveText.gameObject.SetActive(false);
+        player2MoveText.gameObject.SetActive(false);
+        Invoke("Restart", 4f);
+    }
 
     public static void MovePlayer(int playerToMove)
     {

@@ -14,7 +14,6 @@ public class Player : MonoBehaviour {
     private UI_Inventory uiInventory;
     private TextMeshProUGUI statTextMeshPro;
     private Text pointsTextBox;
-    private int points = 0;
     private Transform[][] waypoints;
 
     [SerializeField] private float moveSpeed = 1f;
@@ -24,6 +23,7 @@ public class Player : MonoBehaviour {
     [HideInInspector] public int maxDice = 4;
     [HideInInspector] public int inventoryLimit = 4;
     [HideInInspector] public int strength = 1;
+    [HideInInspector] public int points = 0;
 
     // Use this for initialization
     private void Start() {
@@ -123,33 +123,37 @@ public class Player : MonoBehaviour {
 
     public void TryFullfillOrder(Order order) {
         List<Item> items = inventory.GetItemList();
+        List<Item> itemsCopy = new List<Item>(items);
         List<Item.ItemType> recipe = order.GetRecipe();
-        int found = 0;
-        Debug.Log("RecipeLength: " + recipe.Count + " ItemLength: " + items.Count);
+
         foreach (Item.ItemType type in recipe) {
-            foreach (Item item in items) {
-                if (item.itemType.Equals(type)) {
-                    found++;
+            bool found = false;
+            for (int i = 0; i < itemsCopy.Count; i++) {
+                Item curr = itemsCopy[i];
+                if (curr.itemType.Equals(type)) {
+                    itemsCopy.Remove(curr);
+                    found = true;
                     break;
                 }
             }
-        }
-        if (found<3) {
-            Debug.Log("Unable to make this pizza! Found = " + found);
-            return;
+            if (!found) {
+                Debug.Log("Unable to make this pizza! You don't have " + type + ".");
+                return;
+            }
         }
 
-        Debug.Log("Ready to make pizza!");
         // The player has all ingredients to fulfill the order
-        foreach (Item.ItemType type in recipe) {
-            foreach (Item item in items.ToList()) {
-                if (item.itemType.Equals(type)) {
-                    inventory.Remove(item);
-                    break;
-                }
-            }
-        }
+        Debug.Log("You are ready to make pizza!");
+        inventory.SetItemList(itemsCopy);
         CompleteOrder(order);
+        //foreach (Item.ItemType type in recipe) {
+        //    foreach (Item item in items.ToList()) {
+        //        if (item.itemType.Equals(type)) {
+        //            inventory.Remove(item);
+        //            break;
+        //        }
+        //    }
+        //}
     }
 
     private void CompleteOrder(Order order) {

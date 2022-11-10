@@ -11,13 +11,14 @@ public class Order: MonoBehaviour {
         CheeseMushroomPepperoniPizza,
         CheesePepperJalapenoPizza,
         CheeseJalapenoOnionPizza,
-        PepperOnionOnionPizza,
+        JalapenoOnionOnionPizza,
     }
 
     public enum BonusType {
         IncreaseInventory,
         IncreaseDiceNumber,
         IncreaseStrength,
+        BonusPoints,
         None,
     }
 
@@ -46,8 +47,11 @@ public class Order: MonoBehaviour {
             case OrderType.CheeseMushroomPepperoniPizza:
                 bonusType = BonusType.IncreaseDiceNumber;
                 break;
-            case OrderType.PepperoniMushroomOnionPizza:
+            case OrderType.CheeseJalapenoOnionPizza:
                 bonusType = BonusType.IncreaseStrength;
+                break;
+            case OrderType.JalapenoOnionOnionPizza:
+                bonusType = BonusType.BonusPoints;
                 break;
             default:
                 bonusType = BonusType.None;
@@ -86,8 +90,8 @@ public class Order: MonoBehaviour {
                 itemList.Add(Item.ItemType.Onion);
                 itemList.Add(Item.ItemType.Jalapeno);
                 return itemList;
-            case OrderType.PepperOnionOnionPizza:
-                itemList.Add(Item.ItemType.Pepper);
+            case OrderType.JalapenoOnionOnionPizza:
+                itemList.Add(Item.ItemType.Jalapeno);
                 itemList.Add(Item.ItemType.Onion);
                 itemList.Add(Item.ItemType.Onion);
                 return itemList;
@@ -96,7 +100,7 @@ public class Order: MonoBehaviour {
 
     public int GetOrderPoints() {
         switch (bonusType) {
-            case BonusType.None:
+            case BonusType.BonusPoints:
                 return 2;
             default:
                 return 1;
@@ -110,7 +114,7 @@ public class Order: MonoBehaviour {
             case OrderType.CheeseMushroomPepperoniPizza: return ImageAsset.Instance.CheeseMushroomPepperoniPizzaSprite;
             case OrderType.CheesePepperJalapenoPizza: return ImageAsset.Instance.CheesePepperJalapenoPizzaSprite;
             case OrderType.CheeseJalapenoOnionPizza: return ImageAsset.Instance.CheeseJalapenoOnionPizzaSprite;
-            case OrderType.PepperOnionOnionPizza: return ImageAsset.Instance.PepperOnionOnionPizzaSprite;
+            case OrderType.JalapenoOnionOnionPizza: return ImageAsset.Instance.JalapenoOnionOnionPizzaSprite;
         }
     }
 
@@ -122,8 +126,11 @@ public class Order: MonoBehaviour {
                 return "You may upgrade your dice!";
             case BonusType.IncreaseStrength:
                 return "You may increase your strength!";
-            default:
+            case BonusType.BonusPoints:
                 return "Special pizza that is worth 2 points!";
+            default:
+                return "Just an ordinary pizza...";
+
         }
     }
 }
