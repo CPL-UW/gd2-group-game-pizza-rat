@@ -1982,12 +1982,14 @@ MonoBehaviour:
   cheeseSprite: {fileID: 1798274497, guid: 70d39670f287544da93c9e4991b65faf, type: 3}
   mushroomSprite: {fileID: 717149091, guid: 70d39670f287544da93c9e4991b65faf, type: 3}
   pepperoniSprite: {fileID: -1093337060, guid: eeeedcd044a7746808ee1dd3a9a5fb08, type: 3}
-  garlicSprite: {fileID: 565652939, guid: eeeedcd044a7746808ee1dd3a9a5fb08, type: 3}
+  onionSprite: {fileID: 565652939, guid: eeeedcd044a7746808ee1dd3a9a5fb08, type: 3}
   jalapenoSprite: {fileID: -2037590074, guid: 70d39670f287544da93c9e4991b65faf, type: 3}
   pepperSprite: {fileID: -1550119900, guid: eeeedcd044a7746808ee1dd3a9a5fb08, type: 3}
-  PepperoniMushroomGarlicPizzaSprite: {fileID: 21300000, guid: fdcc8e1ba50924205aba214f9128f422, type: 3}
+  PepperoniMushroomOnionPizzaSprite: {fileID: 21300000, guid: fdcc8e1ba50924205aba214f9128f422, type: 3}
   CheeseMushroomPepperoniPizzaSprite: {fileID: 21300000, guid: ab628dd7af4134998a86a8cada511c93, type: 3}
   CheesePepperJalapenoPizzaSprite: {fileID: 21300000, guid: 512be9a55265246eea7f2821aa07ee03, type: 3}
+  CheeseJalapenoOnionPizzaSprite: {fileID: 21300000, guid: f2f83c2de02294d43b5ea7362eeb28be, type: 3}
+  PepperOnionOnionPizzaSprite: {fileID: 21300000, guid: 68215d776867c49a995940c748103e3e, type: 3}
 --- !u!4 &514799740
 Transform:
   m_ObjectHideFlags: 0

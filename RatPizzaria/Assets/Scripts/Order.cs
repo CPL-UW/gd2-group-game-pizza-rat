@@ -10,6 +10,8 @@ public class Order: MonoBehaviour {
         PepperoniMushroomOnionPizza,
         CheeseMushroomPepperoniPizza,
         CheesePepperJalapenoPizza,
+        CheeseJalapenoOnionPizza,
+        PepperOnionOnionPizza,
     }
 
     public enum BonusType {
@@ -79,6 +81,16 @@ public class Order: MonoBehaviour {
                 itemList.Add(Item.ItemType.Pepper);
                 itemList.Add(Item.ItemType.Jalapeno);
                 return itemList;
+            case OrderType.CheeseJalapenoOnionPizza:
+                itemList.Add(Item.ItemType.Cheese);
+                itemList.Add(Item.ItemType.Onion);
+                itemList.Add(Item.ItemType.Jalapeno);
+                return itemList;
+            case OrderType.PepperOnionOnionPizza:
+                itemList.Add(Item.ItemType.Pepper);
+                itemList.Add(Item.ItemType.Onion);
+                itemList.Add(Item.ItemType.Onion);
+                return itemList;
         }
     }
 
@@ -97,6 +109,8 @@ public class Order: MonoBehaviour {
             case OrderType.PepperoniMushroomOnionPizza: return ImageAsset.Instance.PepperoniMushroomOnionPizzaSprite;
             case OrderType.CheeseMushroomPepperoniPizza: return ImageAsset.Instance.CheeseMushroomPepperoniPizzaSprite;
             case OrderType.CheesePepperJalapenoPizza: return ImageAsset.Instance.CheesePepperJalapenoPizzaSprite;
+            case OrderType.CheeseJalapenoOnionPizza: return ImageAsset.Instance.CheeseJalapenoOnionPizzaSprite;
+            case OrderType.PepperOnionOnionPizza: return ImageAsset.Instance.PepperOnionOnionPizzaSprite;
         }
     }
 
