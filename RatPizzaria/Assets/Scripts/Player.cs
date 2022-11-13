@@ -91,24 +91,30 @@ public class Player : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.GetComponent<ItemCollectable>() != null) {
-            ItemCollectable itemCollectable = other.GetComponent<ItemCollectable>();
-            if (inventory.GetItemList().Count >= inventoryLimit) {
-                Debug.Log("You reach the inventory limit!");
-                return;
-            }
-            Transform canvas = GameObject.Find("Canvas").transform;
-            Transform panelTemplate = canvas.Find("Panel");
-            OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
-            panel.DisplayIngredientPanel(itemCollectable, this);
-        }
-
         if (other.GetComponent<Player>() != null) {
             if (GameControl.whosTurn == gameObject) {
                 Transform canvas = GameObject.Find("Canvas").transform;
                 Transform panelTemplate = canvas.Find("Panel");
                 OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
                 panel.DisplayOpponentPanel(other.gameObject, this);
+            }
+        }
+
+        if (other.GetComponent<ItemCollectable>() != null) {
+            ItemCollectable itemCollectable = other.GetComponent<ItemCollectable>();
+            if (inventory.GetItemList().Count >= inventoryLimit) {
+                Transform canvas = GameObject.Find("Canvas").transform;
+                Transform panelTemplate = canvas.Find("Panel");
+                OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
+                panel.DisplayBasicPanel("You reached the inventory limit!");
+            }
+            else {
+                inventory.AddItem(itemCollectable.GetItem());
+                itemCollectable.DestroySelf();
+                //Transform canvas = GameObject.Find("Canvas").transform;
+                //Transform panelTemplate = canvas.Find("Panel");
+                //OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
+                //panel.DisplayIngredientPanel(itemCollectable, this);
             }
         }
     }

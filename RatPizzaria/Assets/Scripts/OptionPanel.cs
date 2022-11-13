@@ -65,23 +65,20 @@ public class OptionPanel : MonoBehaviour {
         buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
-    private void DisplayLosingPanel(Player opponent, Player player) {
+    public void DisplayBasicPanel(String displayText, Sprite sprite = null) {
         gameObject.SetActive(true);
-        Transform ingredientImage = transform.Find("Image");
-        Transform itemText = transform.Find("Text");
+        Transform text = transform.Find("Text");
+        text.GetComponent<TextMeshProUGUI>().text = displayText;
+        Transform image = transform.Find("Image");
+        if (sprite) image.GetComponent<Image>().sprite = sprite;
+        else image.gameObject.SetActive(false);
         Transform buttonTemplate = transform.Find("Button");
-        buttonTemplate.Find("Text").GetComponent<TextMeshProUGUI>().text = "OK";
+        buttonTemplate.Find("Text").GetComponent<TextMeshProUGUI>().text = "Close";
         buttonTemplate.GetComponent<Button>().onClick.AddListener(CloseWindow);
 
-        this.opponent = opponent.GetComponent<Player>();
-        this.player = player;
-
-        ingredientImage.GetComponent<Image>().sprite = opponent.GetComponent<SpriteRenderer>().sprite;
-        itemText.GetComponent<TextMeshProUGUI>().text = "You tried to sneak up on your opponent, " +
-            "but he spotted you right away... No one wins and nothing happens!";
     }
 
-        private void DisplayWinningPanel(Player opponent, Player player) {
+    private void DisplayWinningPanel(Player opponent, Player player) {
         gameObject.SetActive(true);
         Transform ingredientImage = transform.Find("Image");
         Transform itemText = transform.Find("Text");
@@ -123,7 +120,9 @@ public class OptionPanel : MonoBehaviour {
         OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
 
         if (player.strength > opponent.strength) panel.DisplayWinningPanel(opponent, player);
-        else panel.DisplayLosingPanel(opponent, player);
+        else panel.DisplayBasicPanel("You tried to sneak up on your opponent,\n" +
+            "but he spotted you right away...\nNo one wins and nothing happens!",
+            opponent.GetComponent<SpriteRenderer>().sprite);
     }
 
     private void TakeIngredient() {
