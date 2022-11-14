@@ -28,5 +28,6 @@ public class Inventory {
 
     public void SetItemList(List<Item> list) {
         this.itemList = list;
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
 }

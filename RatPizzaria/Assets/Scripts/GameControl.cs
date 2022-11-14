@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,16 +8,14 @@ using Random = UnityEngine.Random;
 
 public class GameControl : MonoBehaviour {
 
-    private static GameObject player1MoveText, player2MoveText;
     private static GameObject dice;
     private Dictionary<Item.ItemType, int[]> ingredientsDict;
 
     public static int diceSideThrown = 0;
-    public static GameObject player1, player2;
-    public static int[] player1StartWaypoint = new int[] { 0, 0 };
-    public static int[] player2StartWaypoint = new int[] { 0, 9 };
+    public static List<Player> playerList = new List<Player>();
+    public static int[,] playerStartWaypoint = new int[4, 2] { { 0, 0 }, { 0, 9 }, { 7, 0 }, { 7, 9 } };
 
-    public static GameObject whosTurn = player1;
+    public static GameObject whosTurn;
     public static bool waitForDice = false;
     public static bool gameOver = false;
     public Transform[][] waypoints;
@@ -28,41 +24,38 @@ public class GameControl : MonoBehaviour {
     public ChefManager selectedChefs;
 
     private void InitPlayer() {
-        player1 = Instantiate(ImageAsset.Instance.pfPlayer, GameObject.Find("Players").transform).gameObject;
-        player1.GetComponent<Player>().currIndex = player1StartWaypoint;
-
         Transform playerInfoUI = canvas.Find("UI_PlayerInfo").transform;
         Transform playerInfoTemplate = playerInfoUI.Find("PlayerInfoSlotContainer");
-        Transform playerInfo = Instantiate(playerInfoTemplate, playerInfoUI);
-        RectTransform playerInfoRect = playerInfo.GetComponent<RectTransform>();
-        playerInfoRect.anchoredPosition = new Vector2(67, -111);
-        playerInfoRect.anchorMin = new Vector2(0, 1);
-        playerInfoRect.anchorMax = new Vector2(0, 1);
-        playerInfoRect.pivot = new Vector2(0.5f, 0.5f);
-        playerInfo.gameObject.SetActive(true);
-        playerInfo.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(selectedChefs.chefs[0]);
+        for (int i=0; i<2; i++) {
+            Transform playerInfo = Instantiate(playerInfoTemplate, playerInfoUI);
+            playerInfo.gameObject.SetActive(true);
+            playerInfo.transform.Find("PlayerMoveText").gameObject.SetActive(false);
+            playerInfo.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(selectedChefs.chefs[i]);
+            RectTransform playerInfoRect = playerInfo.GetComponent<RectTransform>();
+            switch (i) {
+                case 0:
+                    playerInfoRect.anchoredPosition = new Vector2(67, -111);
+                    playerInfoRect.anchorMin = new Vector2(0, 1);
+                    playerInfoRect.anchorMax = new Vector2(0, 1);
+                    playerInfoRect.pivot = new Vector2(0.5f, 0.5f);
+                    break;
+                case 1:
+                    playerInfoRect.anchoredPosition = new Vector2(-67, -111);
+                    playerInfoRect.anchorMin = new Vector2(1, 1);
+                    playerInfoRect.anchorMax = new Vector2(1, 1);
+                    playerInfoRect.pivot = new Vector2(0.5f, 0.5f);
+                    break;
+            }
 
-        player1.GetComponent<Player>().uiInfo = playerInfo;
-        player1.GetComponent<SpriteRenderer>().sprite = ChefManager.GetSprite(selectedChefs.chefs[0]);
-        player1MoveText = playerInfo.transform.Find("PlayerMoveText").gameObject;
-        player1MoveText.gameObject.SetActive(true);
+            GameObject player = Instantiate(ImageAsset.Instance.pfPlayer, GameObject.Find("Players").transform).gameObject;
+            player.GetComponent<SpriteRenderer>().sprite = ChefManager.GetSprite(selectedChefs.chefs[i]);
+            player.GetComponent<Player>().currIndex[0] = playerStartWaypoint[i, 0];
+            player.GetComponent<Player>().currIndex[1] = playerStartWaypoint[i, 1];
+            player.GetComponent<Player>().uiInfo = playerInfo;
+            player.GetComponent<Player>().FinishSetUpPlayer();
 
-        player2 = Instantiate(ImageAsset.Instance.pfPlayer, GameObject.Find("Players").transform).gameObject;
-        player2.GetComponent<Player>().currIndex = player2StartWaypoint;
-
-        Transform playerInfo2 = Instantiate(playerInfoTemplate, playerInfoUI);
-        RectTransform playerInfoRect2 = playerInfo2.GetComponent<RectTransform>();
-        playerInfoRect2.anchoredPosition = new Vector2(-67, -111);
-        playerInfoRect2.anchorMin = new Vector2(1, 1);
-        playerInfoRect2.anchorMax = new Vector2(1, 1);
-        playerInfoRect2.pivot = new Vector2(0.5f, 0.5f);
-        playerInfo2.gameObject.SetActive(true);
-        playerInfo2.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(selectedChefs.chefs[1]);
-
-        player2.GetComponent<Player>().uiInfo = playerInfo2;
-        player2.GetComponent<SpriteRenderer>().sprite = ChefManager.GetSprite(selectedChefs.chefs[1]);
-        player2MoveText = playerInfo2.transform.Find("PlayerMoveText").gameObject;
-        player2MoveText.gameObject.SetActive(false);
+            playerList.Add(player.GetComponent<Player>());
+        }
     }
 
     // Use this for initialization
@@ -77,15 +70,16 @@ public class GameControl : MonoBehaviour {
             }
         }
 
-
         InitPlayer();
+        whosTurn = playerList[0].gameObject;
+        whosTurn.GetComponent<Player>().moveText.SetActive(true);
 
         dice = GameObject.Find("Dice");
+        dice.GetComponent<Dice>().RefreshDiceNumber(playerList[0].maxDice);
+        waitForDice = true;
 
         ingredientsDict = new Dictionary<Item.ItemType, int[]>();
         SpawnItemCollectable();
-
-        waitForDice = true;
     }
 
     // Update is called once per frame
@@ -94,25 +88,25 @@ public class GameControl : MonoBehaviour {
         if (waitForDice) SpawnItemCollectable();
         if (diceSideThrown == 0 && !waitForDice) {
             waitForDice = true;
-            if (player1MoveText.activeSelf) {
-                player1.GetComponent<Player>().moveAllowed = false;
-                player1MoveText.gameObject.SetActive(false);
-                player2MoveText.gameObject.SetActive(true);
-                dice.GetComponent<Dice>().RefreshDiceNumber(player2.GetComponent<Player>().maxDice);
+            if (playerList[0].moveText.activeSelf) {
+                playerList[0].moveAllowed = false;
+                playerList[0].moveText.gameObject.SetActive(false);
+                playerList[1].moveText.gameObject.SetActive(true);
+                dice.GetComponent<Dice>().RefreshDiceNumber(playerList[1].maxDice);
             } else {
-                player2.GetComponent<Player>().moveAllowed = false;
-                player2MoveText.gameObject.SetActive(false);
-                player1MoveText.gameObject.SetActive(true);
-                dice.GetComponent<Dice>().RefreshDiceNumber(player1.GetComponent<Player>().maxDice);
+                playerList[1].moveAllowed = false;
+                playerList[1].moveText.gameObject.SetActive(false);
+                playerList[0].moveText.gameObject.SetActive(true);
+                dice.GetComponent<Dice>().RefreshDiceNumber(playerList[0].maxDice);
             }
         }
 
         // Determind if the game ends
-        if (player1.GetComponent<Player>().points >= 5) {
-            endGame(player1);
+        if (playerList[0].points >= 5) {
+            endGame(playerList[0].gameObject);
         }
-        else if (player2.GetComponent<Player>().points >= 5) {
-            endGame(player2);
+        else if (playerList[1].points >= 5) {
+            endGame(playerList[1].gameObject);
         }
     }
 
@@ -125,10 +119,10 @@ public class GameControl : MonoBehaviour {
         winningPanel.gameObject.SetActive(true);
         winningPanel.Find("Text").GetComponent<TextMeshProUGUI>().text = "Congrats!\n" + winner.name + " Won!";
         winningPanel.Find("Image").GetComponent<Image>().sprite = winner.GetComponent<SpriteRenderer>().sprite;
-        player1.gameObject.SetActive(false);
-        player2.gameObject.SetActive(false);
-        player1MoveText.gameObject.SetActive(false);
-        player2MoveText.gameObject.SetActive(false);
+        for (int i=0; i<2; i++) {
+            playerList[i].gameObject.SetActive(false);
+            playerList[i].moveText.gameObject.SetActive(false);
+        }
         Invoke("Restart", 4f);
     }
 
@@ -136,12 +130,12 @@ public class GameControl : MonoBehaviour {
     {
         switch (playerToMove) { 
             case 1:
-                whosTurn = player1;
-                player1.GetComponent<Player>().moveAllowed = true;
+                whosTurn = playerList[0].gameObject;
+                playerList[0].moveAllowed = true;
                 break;
             case 2:
-                whosTurn = player2;
-                player2.GetComponent<Player>().moveAllowed = true;
+                whosTurn = playerList[1].gameObject;
+                playerList[1].moveAllowed = true;
                 break;
         }
         waitForDice = false;
@@ -170,10 +164,10 @@ public class GameControl : MonoBehaviour {
     }
 
     private bool checkPosOverlay(int x, int y) {
-        int[] playerPos = player1.GetComponent<Player>().currIndex;
-        if (x == playerPos[0] && y == playerPos[1]) return false;
-        playerPos = player2.GetComponent<Player>().currIndex;
-        if (x == playerPos[0] && y == playerPos[1]) return false;
+        for (int i=0; i<2; i++) {
+            int[] playerPos = playerList[i].currIndex;
+            if (x == playerPos[0] && y == playerPos[1]) return false;
+        }
 
         foreach (int[] pos in ingredientsDict.Values) {
             if (x == pos[0] && y == pos[1]) return false;

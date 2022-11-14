@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 
     public int[] currIndex = new int[] { 0, 0 };
     public Transform uiInfo;
+    public GameObject moveText;
 
     private Inventory inventory;
     private UI_Inventory uiInventory;
@@ -26,7 +27,8 @@ public class Player : MonoBehaviour {
     [HideInInspector] public int points = 0;
 
     // Use this for initialization
-    private void Start() {
+    private void Awake() {
+        gameObject.SetActive(false);
         Transform waypointParent = GameObject.Find("BoardWaypoints").GetComponent<Transform>();
         waypoints = new Transform[waypointParent.childCount][];
         for (int i = 0; i < waypointParent.childCount; i++) {
@@ -36,18 +38,6 @@ public class Player : MonoBehaviour {
                 waypoints[i][j] = row.GetChild(j);
             }
         }
-
-        transform.position = waypoints[currIndex[0]][currIndex[1]].transform.position;
-
-        uiInventory = uiInfo.Find("PlayerInventory").GetComponent<UI_Inventory>();
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory, this);
-        uiInventory.CreateNewOrder();
-        uiInventory.CreateNewOrder();
-
-        statTextMeshPro = uiInfo.Find("Stat").Find("StatText").GetComponent<TextMeshProUGUI>();
-        pointsTextBox = uiInfo.Find("PlayerPoints").Find("PointText").GetComponent<Text>();
-        RefreshPlayerInfo();
     }
 
     // Update is called once per frame
@@ -55,6 +45,23 @@ public class Player : MonoBehaviour {
         if (moveAllowed)
             Move();
 	}
+
+    public void FinishSetUpPlayer() {
+        transform.position = waypoints[currIndex[0]][currIndex[1]].transform.position;
+
+        statTextMeshPro = uiInfo.Find("Stat").Find("StatText").GetComponent<TextMeshProUGUI>();
+        pointsTextBox = uiInfo.Find("PlayerPoints").Find("PointText").GetComponent<Text>();
+        moveText = uiInfo.Find("PlayerMoveText").gameObject;
+
+        uiInventory = uiInfo.Find("PlayerInventory").GetComponent<UI_Inventory>();
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory, this);
+        uiInventory.CreateNewOrder();
+        uiInventory.CreateNewOrder();
+
+        RefreshPlayerInfo();
+        gameObject.SetActive(true);
+    }
 
     private void Move()
     {

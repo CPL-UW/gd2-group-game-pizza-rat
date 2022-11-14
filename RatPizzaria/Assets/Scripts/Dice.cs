@@ -10,11 +10,9 @@ public class Dice : MonoBehaviour {
     private int maxDiceNum = 0;
 
     // Use this for initialization
-    private void Start () {
+    private void Awake () {
         rend = GetComponent<SpriteRenderer>();
         diceSides = Resources.LoadAll<Sprite>("DiceSides/");
-        maxDiceNum = GameControl.player1.GetComponent<Player>().maxDice;
-        rend.sprite = diceSides[maxDiceNum - 1];
 	}
 
     private void OnMouseDown()
