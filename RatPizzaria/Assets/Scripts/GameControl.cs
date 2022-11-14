@@ -11,11 +11,11 @@ using Random = UnityEngine.Random;
 public class GameControl : MonoBehaviour {
 
     private static GameObject player1MoveText, player2MoveText;
-    private static GameObject player1, player2;
     private static GameObject dice;
     private Dictionary<Item.ItemType, int[]> ingredientsDict;
 
     public static int diceSideThrown = 0;
+    public static GameObject player1, player2;
     public static int[] player1StartWaypoint = new int[] { 0, 0 };
     public static int[] player2StartWaypoint = new int[] { 0, 9 };
 
@@ -24,6 +24,46 @@ public class GameControl : MonoBehaviour {
     public static bool gameOver = false;
     public Transform[][] waypoints;
     public Transform winningPanel;
+    public Transform canvas;
+    public ChefManager selectedChefs;
+
+    private void InitPlayer() {
+        player1 = Instantiate(ImageAsset.Instance.pfPlayer, GameObject.Find("Players").transform).gameObject;
+        player1.GetComponent<Player>().currIndex = player1StartWaypoint;
+
+        Transform playerInfoUI = canvas.Find("UI_PlayerInfo").transform;
+        Transform playerInfoTemplate = playerInfoUI.Find("PlayerInfoSlotContainer");
+        Transform playerInfo = Instantiate(playerInfoTemplate, playerInfoUI);
+        RectTransform playerInfoRect = playerInfo.GetComponent<RectTransform>();
+        playerInfoRect.anchoredPosition = new Vector2(67, -111);
+        playerInfoRect.anchorMin = new Vector2(0, 1);
+        playerInfoRect.anchorMax = new Vector2(0, 1);
+        playerInfoRect.pivot = new Vector2(0.5f, 0.5f);
+        playerInfo.gameObject.SetActive(true);
+        playerInfo.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(selectedChefs.chefs[0]);
+
+        player1.GetComponent<Player>().uiInfo = playerInfo;
+        player1.GetComponent<SpriteRenderer>().sprite = ChefManager.GetSprite(selectedChefs.chefs[0]);
+        player1MoveText = playerInfo.transform.Find("PlayerMoveText").gameObject;
+        player1MoveText.gameObject.SetActive(true);
+
+        player2 = Instantiate(ImageAsset.Instance.pfPlayer, GameObject.Find("Players").transform).gameObject;
+        player2.GetComponent<Player>().currIndex = player2StartWaypoint;
+
+        Transform playerInfo2 = Instantiate(playerInfoTemplate, playerInfoUI);
+        RectTransform playerInfoRect2 = playerInfo2.GetComponent<RectTransform>();
+        playerInfoRect2.anchoredPosition = new Vector2(-67, -111);
+        playerInfoRect2.anchorMin = new Vector2(1, 1);
+        playerInfoRect2.anchorMax = new Vector2(1, 1);
+        playerInfoRect2.pivot = new Vector2(0.5f, 0.5f);
+        playerInfo2.gameObject.SetActive(true);
+        playerInfo2.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(selectedChefs.chefs[1]);
+
+        player2.GetComponent<Player>().uiInfo = playerInfo2;
+        player2.GetComponent<SpriteRenderer>().sprite = ChefManager.GetSprite(selectedChefs.chefs[1]);
+        player2MoveText = playerInfo2.transform.Find("PlayerMoveText").gameObject;
+        player2MoveText.gameObject.SetActive(false);
+    }
 
     // Use this for initialization
     void Start () {
@@ -37,17 +77,8 @@ public class GameControl : MonoBehaviour {
             }
         }
 
-        player1MoveText = GameObject.Find("Player1MoveText");
-        player2MoveText = GameObject.Find("Player2MoveText");
 
-        player1 = GameObject.Find("Player1");
-        player2 = GameObject.Find("Player2");
-
-        player1.GetComponent<Player>().moveAllowed = false;
-        player2.GetComponent<Player>().moveAllowed = false;
-
-        player1MoveText.gameObject.SetActive(true);
-        player2MoveText.gameObject.SetActive(false);
+        InitPlayer();
 
         dice = GameObject.Find("Dice");
 

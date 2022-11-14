@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PixelScene.unity
     guid: cef46930fe65d40d69a7deb50811a2d0
+  - enabled: 1
+    path: Assets/Scenes/ChooseYourChef.unity
+    guid: ba5c34645a2ba49e1a61d071915c530d
   m_configObjects: {}

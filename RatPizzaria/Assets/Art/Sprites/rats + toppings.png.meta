@@ -126,13 +126,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rats + toppings_1
+      name: rat1
       rect:
         serializedVersion: 2
-        x: 24
-        y: 44.666664
+        x: 23
+        y: 43
         width: 18
-        height: 19.333334
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,13 +147,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rats + toppings_2
+      name: rat2
       rect:
         serializedVersion: 2
         x: 44
-        y: 44.666664
+        y: 43
         width: 18
-        height: 19.333334
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,13 +168,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rats + toppings_3
+      name: rat3
       rect:
         serializedVersion: 2
         x: 4
-        y: 23.666666
+        y: 24
         width: 18
-        height: 19.333334
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,13 +189,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rats + toppings_4
+      name: rat4
       rect:
         serializedVersion: 2
-        x: 24
-        y: 23.666666
+        x: 23
+        y: 23
         width: 18
-        height: 19.333334
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,7 +210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rats + toppings_5
+      name: rat5
       rect:
         serializedVersion: 2
         x: 44
@@ -231,7 +231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rats + toppings_6
+      name: rat6
       rect:
         serializedVersion: 2
         x: 4
@@ -304,15 +304,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      rats + toppings_2: -1489768881
-      rats + toppings_1: -2055930169
-      rats + toppings_5: 2043389339
-      rats + toppings_6: -1738996375
-      rats + toppings_3: -225610670
-      rats + toppings_4: -941930893
+      rat2: -1489768881
+      rat1: -2055930169
+      rat4: -941930893
+      rat5: 2043389339
+      rat6: -1738996375
       rats + toppings_8: -2037590074
       rats + toppings_0: 1798274497
       rats + toppings_7: 717149091
+      rat3: -225610670
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

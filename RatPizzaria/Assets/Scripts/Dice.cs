@@ -13,7 +13,7 @@ public class Dice : MonoBehaviour {
     private void Start () {
         rend = GetComponent<SpriteRenderer>();
         diceSides = Resources.LoadAll<Sprite>("DiceSides/");
-        maxDiceNum = GameObject.Find("Player1").GetComponent<Player>().maxDice;
+        maxDiceNum = GameControl.player1.GetComponent<Player>().maxDice;
         rend.sprite = diceSides[maxDiceNum - 1];
 	}
 
