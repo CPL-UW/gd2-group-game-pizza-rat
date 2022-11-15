@@ -26,7 +26,7 @@ public class GameControl : MonoBehaviour {
     private void InitPlayer() {
         Transform playerInfoUI = canvas.Find("UI_PlayerInfo").transform;
         Transform playerInfoTemplate = playerInfoUI.Find("PlayerInfoSlotContainer");
-        for (int i=0; i<2; i++) {
+        for (int i=0; i<4; i++) {
             Transform playerInfo = Instantiate(playerInfoTemplate, playerInfoUI);
             playerInfo.gameObject.SetActive(true);
             playerInfo.transform.Find("PlayerMoveText").gameObject.SetActive(false);
@@ -37,13 +37,21 @@ public class GameControl : MonoBehaviour {
                     playerInfoRect.anchoredPosition = new Vector2(67, -111);
                     playerInfoRect.anchorMin = new Vector2(0, 1);
                     playerInfoRect.anchorMax = new Vector2(0, 1);
-                    playerInfoRect.pivot = new Vector2(0.5f, 0.5f);
                     break;
                 case 1:
                     playerInfoRect.anchoredPosition = new Vector2(-67, -111);
                     playerInfoRect.anchorMin = new Vector2(1, 1);
                     playerInfoRect.anchorMax = new Vector2(1, 1);
-                    playerInfoRect.pivot = new Vector2(0.5f, 0.5f);
+                    break;
+                case 2:
+                    playerInfoRect.anchoredPosition = new Vector2(67, 111);
+                    playerInfoRect.anchorMin = new Vector2(0, 0);
+                    playerInfoRect.anchorMax = new Vector2(0, 0);
+                    break;
+                case 3:
+                    playerInfoRect.anchoredPosition = new Vector2(-67, 111);
+                    playerInfoRect.anchorMin = new Vector2(1, 0);
+                    playerInfoRect.anchorMax = new Vector2(1, 0);
                     break;
             }
 
@@ -88,25 +96,21 @@ public class GameControl : MonoBehaviour {
         if (waitForDice) SpawnItemCollectable();
         if (diceSideThrown == 0 && !waitForDice) {
             waitForDice = true;
-            if (playerList[0].moveText.activeSelf) {
-                playerList[0].moveAllowed = false;
-                playerList[0].moveText.gameObject.SetActive(false);
-                playerList[1].moveText.gameObject.SetActive(true);
-                dice.GetComponent<Dice>().RefreshDiceNumber(playerList[1].maxDice);
-            } else {
-                playerList[1].moveAllowed = false;
-                playerList[1].moveText.gameObject.SetActive(false);
-                playerList[0].moveText.gameObject.SetActive(true);
-                dice.GetComponent<Dice>().RefreshDiceNumber(playerList[0].maxDice);
+            for (int i=0; i<4; i++) {
+                if (playerList[i].moveText.activeSelf) {
+                    playerList[i].moveAllowed = false;
+                    playerList[i].moveText.gameObject.SetActive(false);
+                    int nextPlayer = (i + 1)% 4;
+                    playerList[nextPlayer].moveText.gameObject.SetActive(true);
+                    dice.GetComponent<Dice>().RefreshDiceNumber(playerList[nextPlayer].maxDice);
+                    break;
+                }
             }
         }
 
         // Determind if the game ends
-        if (playerList[0].points >= 5) {
-            endGame(playerList[0].gameObject);
-        }
-        else if (playerList[1].points >= 5) {
-            endGame(playerList[1].gameObject);
+        for (int i = 0; i < 4; i++) {
+            if (playerList[i].points >= 5) endGame(playerList[i].gameObject);
         }
     }
 
@@ -119,7 +123,7 @@ public class GameControl : MonoBehaviour {
         winningPanel.gameObject.SetActive(true);
         winningPanel.Find("Text").GetComponent<TextMeshProUGUI>().text = "Congrats!\n" + winner.name + " Won!";
         winningPanel.Find("Image").GetComponent<Image>().sprite = winner.GetComponent<SpriteRenderer>().sprite;
-        for (int i=0; i<2; i++) {
+        for (int i=0; i<4; i++) {
             playerList[i].gameObject.SetActive(false);
             playerList[i].moveText.gameObject.SetActive(false);
         }
@@ -128,16 +132,8 @@ public class GameControl : MonoBehaviour {
 
     public static void MovePlayer(int playerToMove)
     {
-        switch (playerToMove) { 
-            case 1:
-                whosTurn = playerList[0].gameObject;
-                playerList[0].moveAllowed = true;
-                break;
-            case 2:
-                whosTurn = playerList[1].gameObject;
-                playerList[1].moveAllowed = true;
-                break;
-        }
+        whosTurn = playerList[playerToMove].gameObject;
+        playerList[playerToMove].moveAllowed = true;
         waitForDice = false;
     }
 
@@ -164,7 +160,7 @@ public class GameControl : MonoBehaviour {
     }
 
     private bool checkPosOverlay(int x, int y) {
-        for (int i=0; i<2; i++) {
+        for (int i=0; i<4; i++) {
             int[] playerPos = playerList[i].currIndex;
             if (x == playerPos[0] && y == playerPos[1]) return false;
         }

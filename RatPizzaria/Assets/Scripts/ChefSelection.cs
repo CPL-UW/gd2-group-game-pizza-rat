@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ChefSelection : MonoBehaviour
 {
@@ -11,9 +13,16 @@ public class ChefSelection : MonoBehaviour
     public SpriteRenderer rend;
     public int selectedChef = 0;
     private int chefCnt = 6;
+    private TextMeshProUGUI nameBox;
+    private Image imageBox;
 
     private void Start() {
-        rend.sprite = ChefManager.GetSprite(GetChef());
+        ChefManager.currTakenChefs.Add(selectedChef);
+
+        nameBox = transform.Find("NameText").GetComponent<TextMeshProUGUI>();
+        imageBox = transform.Find("RatImage").GetComponent<Image>();
+        nameBox.text = ChefManager.GetName(GetChef());
+        imageBox.sprite = ChefManager.GetSprite(GetChef());
     }
 
     public ChefManager.Chef GetChef() {
@@ -22,15 +31,31 @@ public class ChefSelection : MonoBehaviour
     }
 
     public void NextOption() {
+        ChefManager.currTakenChefs.Remove(selectedChef);
         selectedChef += 1;
         selectedChef %= chefCnt;
-        rend.sprite = ChefManager.GetSprite(GetChef());
+        while (ChefManager.currTakenChefs.Contains(selectedChef)) {
+            selectedChef += 1;
+            selectedChef %= chefCnt;
+        }
+        ChefManager.currTakenChefs.Add(selectedChef);
+
+        imageBox.sprite = ChefManager.GetSprite(GetChef());
+        nameBox.text = ChefManager.GetName(GetChef());
     }
 
     public void PrevOption() {
+        ChefManager.currTakenChefs.Remove(selectedChef);
         selectedChef -= 1;
         if (selectedChef == -1) selectedChef = chefCnt-1;
-        rend.sprite = ChefManager.GetSprite(GetChef());
+        while (ChefManager.currTakenChefs.Contains(selectedChef)) {
+            selectedChef -= 1;
+            if (selectedChef == -1) selectedChef = chefCnt - 1;
+        }
+        ChefManager.currTakenChefs.Add(selectedChef);
+
+        imageBox.sprite = ChefManager.GetSprite(GetChef());
+        nameBox.text = ChefManager.GetName(GetChef());
     }
 
     

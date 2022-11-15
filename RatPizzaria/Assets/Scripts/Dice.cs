@@ -5,7 +5,7 @@ public class Dice : MonoBehaviour {
 
     private Sprite[] diceSides;
     private SpriteRenderer rend;
-    private int whosTurn = 1;
+    private int whosTurn = 0;
     private bool coroutineAllowed = true;
     private int maxDiceNum = 0;
 
@@ -35,8 +35,7 @@ public class Dice : MonoBehaviour {
 
         GameControl.diceSideThrown = randomDiceSide + 1;
         GameControl.MovePlayer(whosTurn);
-        whosTurn++;
-        if (whosTurn == 3) whosTurn = 1;
+        whosTurn = (whosTurn+1) % 4;
 
         coroutineAllowed = true;
     }
