@@ -12,6 +12,8 @@ public class ImageAsset : MonoBehaviour
     public Transform pfItemCollectable;
     public Transform pfPlayer;
 
+    public Sprite doughSprite;
+    public Sprite sauceSprite;
     public Sprite cheeseSprite;
     public Sprite mushroomSprite;
     public Sprite pepperoniSprite;
