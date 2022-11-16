@@ -2119,6 +2119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pfItemCollectable: {fileID: 471335922066363765, guid: 62e60c659b5f84aacb2cdff14f6cad83, type: 3}
   pfPlayer: {fileID: 0}
+  doughSprite: {fileID: 0}
+  sauceSprite: {fileID: 0}
   cheeseSprite: {fileID: 1798274497, guid: 70d39670f287544da93c9e4991b65faf, type: 3}
   mushroomSprite: {fileID: 717149091, guid: 70d39670f287544da93c9e4991b65faf, type: 3}
   pepperoniSprite: {fileID: -1093337060, guid: eeeedcd044a7746808ee1dd3a9a5fb08, type: 3}
@@ -6377,7 +6379,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.9803922, g: 0.9333334, b: 0.8705883, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
