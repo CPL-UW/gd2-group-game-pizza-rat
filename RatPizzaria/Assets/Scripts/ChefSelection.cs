@@ -15,6 +15,9 @@ public class ChefSelection : MonoBehaviour
     private int chefCnt = 6;
     private TextMeshProUGUI nameBox;
     private Image imageBox;
+    private TextMeshProUGUI inventoryBox;
+    private TextMeshProUGUI diceBox;
+    private TextMeshProUGUI strengthBox;
 
     private void Start() {
         ChefManager.currTakenChefs.Add(selectedChef);
@@ -23,6 +26,18 @@ public class ChefSelection : MonoBehaviour
         imageBox = transform.Find("RatImage").GetComponent<Image>();
         nameBox.text = ChefManager.GetName(GetChef());
         imageBox.sprite = ChefManager.GetSprite(GetChef());
+
+        inventoryBox = transform.Find("InventoryLimit").GetComponent<TextMeshProUGUI>();
+        diceBox = transform.Find("MaxDice").GetComponent<TextMeshProUGUI>();
+        strengthBox = transform.Find("Strength").GetComponent<TextMeshProUGUI>();
+        UpdateProperties();
+    }
+
+    public void UpdateProperties() {
+        int[] properties = ChefManager.GetProperties(GetChef());
+        inventoryBox.text = "" + properties[0];
+        diceBox.text = "" + properties[1];
+        strengthBox.text = "" + properties[2];
     }
 
     public ChefManager.Chef GetChef() {
@@ -42,6 +57,7 @@ public class ChefSelection : MonoBehaviour
 
         imageBox.sprite = ChefManager.GetSprite(GetChef());
         nameBox.text = ChefManager.GetName(GetChef());
+        UpdateProperties();
     }
 
     public void PrevOption() {
@@ -56,6 +72,7 @@ public class ChefSelection : MonoBehaviour
 
         imageBox.sprite = ChefManager.GetSprite(GetChef());
         nameBox.text = ChefManager.GetName(GetChef());
+        UpdateProperties();
     }
 
     

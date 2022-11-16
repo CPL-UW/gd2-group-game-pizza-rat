@@ -60,6 +60,11 @@ public class GameControl : MonoBehaviour {
             player.GetComponent<Player>().currIndex[0] = playerStartWaypoint[i, 0];
             player.GetComponent<Player>().currIndex[1] = playerStartWaypoint[i, 1];
             player.GetComponent<Player>().uiInfo = playerInfo;
+
+            int[] properties = ChefManager.GetProperties(selectedChefs.chefs[i]);
+            player.GetComponent<Player>().inventoryLimit = properties[0];
+            player.GetComponent<Player>().maxDice = properties[1];
+            player.GetComponent<Player>().strength = properties[2];
             player.GetComponent<Player>().FinishSetUpPlayer();
 
             playerList.Add(player.GetComponent<Player>());

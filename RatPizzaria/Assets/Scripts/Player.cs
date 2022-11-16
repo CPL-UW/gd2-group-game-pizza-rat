@@ -21,9 +21,9 @@ public class Player : MonoBehaviour {
 
     [HideInInspector] public int waypointIndex = 0;
     [HideInInspector] public bool moveAllowed = false;
-    [HideInInspector] public int maxDice = 4;
-    [HideInInspector] public int inventoryLimit = 4;
-    [HideInInspector] public int strength = 1;
+    [HideInInspector] public int maxDice = 0;
+    [HideInInspector] public int inventoryLimit = 0;
+    [HideInInspector] public int strength = 0;
     [HideInInspector] public int points = 0;
 
     // Use this for initialization
