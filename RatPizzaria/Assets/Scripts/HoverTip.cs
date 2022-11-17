@@ -11,12 +11,14 @@ public class HoverTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData) {
         onHover = true;
+        Debug.Log("OnHover");
         StopCoroutine(StartTimer());
         StartCoroutine(StartTimer());
     }
 
     public void OnPointerExit(PointerEventData eventData) {
         onHover = false;
+        Debug.Log("ExitHover");
         StopCoroutine(StartTimer());
         HoverTipManager.OnMouseLoseFocus();
     }

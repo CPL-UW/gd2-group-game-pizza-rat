@@ -20,11 +20,31 @@ public class ImageAsset : MonoBehaviour
     public Sprite onionSprite;
     public Sprite jalapenoSprite;
     public Sprite pepperSprite;
+    
+    public Sprite OnionPizzaSprite;
+    public Sprite PepperoniPizzaSprite;
+    public Sprite CheesePizzaSprite;
+    public Sprite JalapenoPizzaSprite;
+    public Sprite PepperPizzaSprite;
+    public Sprite MushroomPizzaSprite;
+
+    public Sprite PepperMushroomPizzaSprite;
+    public Sprite CheeseOnionPizzaSprite;
+    public Sprite CheesePepperPizzaSprite;
+    public Sprite JalapenoPepperoniPizzaSprite;
+    public Sprite JalapenoOnionPizzaSprite;
+    public Sprite MushroomPepperoniPizzaSprite;
+    public Sprite CheeseJalapenoPizzaSprite;
+
     public Sprite PepperoniMushroomOnionPizzaSprite;
+    public Sprite PepperoniPepperMushroomPizzaSprite;
+    public Sprite CheeseJalapenoOnionPizzaSprite;
+    public Sprite CheesePepperoniPepperPizzaSprite;
+    public Sprite JalapenoPepperoniMushroomPizzaSprite;
+    public Sprite JalapenoOnionOnionPizzaSprite;
     public Sprite CheeseMushroomPepperoniPizzaSprite;
     public Sprite CheesePepperJalapenoPizzaSprite;
-    public Sprite CheeseJalapenoOnionPizzaSprite;
-    public Sprite JalapenoOnionOnionPizzaSprite;
+
     public Sprite BiggECheeseSprite;
     public Sprite TopHatSprite;
     public Sprite ClownRatSprite;

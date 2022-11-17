@@ -57,8 +57,10 @@ public class UI_Inventory : MonoBehaviour {
         }
     }
 
-    public void CreateNewOrder(Order orderToRenew = null) {
+    public void CreateNewOrder(Order orderToRenew = null, int ingredientCount = 0) {
+        Array types = Enum.GetValues(typeof(Order.OrderType));
         Order newOrder = orderToRenew;
+
         if (newOrder == null) {
             float orderSlotCellSize = 40f;
             int x = orderSlotContainer.childCount - 1;
@@ -66,9 +68,14 @@ public class UI_Inventory : MonoBehaviour {
             newOrder.SetPlayer(associatedPlayer);
             newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(10 + x * orderSlotCellSize, -20);
             newOrder.gameObject.SetActive(true);
+        } else {
+            ingredientCount = newOrder.GetRecipe().Count;
         }
 
-        Array types = Enum.GetValues(typeof(Order.OrderType));
-        newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(0, types.Length)));
+        if (ingredientCount == 1) newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(0, 7)));
+        else if (ingredientCount == 2) newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(7, 13)));
+        else newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(13, types.Length)));
+
+
     }
 }
