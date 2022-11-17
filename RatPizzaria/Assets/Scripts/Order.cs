@@ -108,8 +108,8 @@ public class Order: MonoBehaviour {
     public int GetOrderPoints() {
         switch (bonusType) {
             case BonusType.BonusPoints:
-                return GetRecipe().Count - 2;
-            default: return 0;
+                return GetRecipe().Count - 1;
+            default: return 1;
         }
     }
 
