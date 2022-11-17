@@ -58,6 +58,7 @@ public class Player : MonoBehaviour {
         uiInventory.SetInventory(inventory, this);
         uiInventory.CreateNewOrder();
         uiInventory.CreateNewOrder();
+        uiInventory.CreateNewOrder();
 
         RefreshPlayerInfo();
         gameObject.SetActive(true);

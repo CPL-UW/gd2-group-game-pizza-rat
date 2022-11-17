@@ -60,11 +60,11 @@ public class UI_Inventory : MonoBehaviour {
     public void CreateNewOrder(Order orderToRenew = null) {
         Order newOrder = orderToRenew;
         if (newOrder == null) {
-            float orderSlotCellSize = 60f;
+            float orderSlotCellSize = 40f;
             int x = orderSlotContainer.childCount - 1;
             newOrder = Instantiate(orderSlotTemplate, orderSlotContainer).GetComponent<Order>();
             newOrder.SetPlayer(associatedPlayer);
-            newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(20 + x * orderSlotCellSize, -20);
+            newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(10 + x * orderSlotCellSize, -20);
             newOrder.gameObject.SetActive(true);
         }
 
