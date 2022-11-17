@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Dice : MonoBehaviour {
 
@@ -17,8 +18,11 @@ public class Dice : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if (!GameControl.gameOver && GameControl.diceSideThrown == 0 && coroutineAllowed)
-            StartCoroutine("RollTheDice");
+        if (!EventSystem.current.IsPointerOverGameObject()) {
+            if (!GameControl.gameOver && GameControl.diceSideThrown == 0 && coroutineAllowed)
+                StartCoroutine("RollTheDice");
+        }
+        
     }
 
     private IEnumerator RollTheDice()

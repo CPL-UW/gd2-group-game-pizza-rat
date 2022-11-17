@@ -65,6 +65,8 @@ public class OptionPanel : MonoBehaviour {
         buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
+
+
     public void DisplayBasicPanel(String displayText, Sprite sprite = null) {
         gameObject.SetActive(true);
         Transform text = transform.Find("Text");
@@ -76,6 +78,38 @@ public class OptionPanel : MonoBehaviour {
         buttonTemplate.Find("Text").GetComponent<TextMeshProUGUI>().text = "Close";
         buttonTemplate.GetComponent<Button>().onClick.AddListener(CloseWindow);
 
+    }
+
+    public void DisplayDiscardPanel(Player player) {
+        gameObject.SetActive(true);
+        Transform ingredientImage = transform.Find("Image");
+        ingredientImage.gameObject.SetActive(false);
+        Transform itemText = transform.Find("Text");
+        Transform buttonTemplate = transform.Find("Button");
+        buttonTemplate.gameObject.SetActive(false);
+
+        this.player = player;
+
+        itemText.GetComponent<TextMeshProUGUI>().text = "Choose one of your ingredients to discard.";
+
+        HashSet<Item.ItemType> set = new HashSet<Item.ItemType>();
+        int y = 1;
+        Transform buttonTrans;
+        foreach (Item item in player.GetInventory().GetItemList()) {
+            if (set.Contains(item.itemType)) continue;
+            set.Add(item.itemType);
+
+            buttonTrans = Instantiate(buttonTemplate, transform);
+            buttonTrans.gameObject.SetActive(true);
+            buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50 * y++);
+            buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = item.itemType.ToString();
+            buttonTrans.GetComponent<Button>().onClick.AddListener(() => DiscardIngredient(this.player, item));
+        }
+        buttonTrans = Instantiate(buttonTemplate, transform);
+        buttonTrans.gameObject.SetActive(true);
+        buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50 * y);
+        buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = "Close";
+        buttonTrans.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
     private void DisplayWinningPanel(Player opponent, Player player) {
@@ -109,6 +143,11 @@ public class OptionPanel : MonoBehaviour {
     private void StealIngredient(Player player, Player opponent, Item item) {
         opponent.GetInventory().Remove(item);
         player.GetInventory().AddItem(item);
+        CloseWindow();
+    }
+
+    private void DiscardIngredient(Player player, Item item) {
+        player.GetInventory().Remove(item);
         CloseWindow();
     }
 

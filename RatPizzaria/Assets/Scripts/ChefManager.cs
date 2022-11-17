@@ -59,7 +59,7 @@ public class ChefManager : MonoBehaviour {
             case Chef.TopHat: return new int[] { 4, 2, 4 };
             case Chef.ClownRat: return new int[] { 3, 3, 4 };
             case Chef.MasterSilver: return new int[] { 4, 4, 2 };
-            case Chef.NYCStreetRat: return new int[] { 2, 4, 4 };
+            case Chef.NYCStreetRat: return new int[] { 3, 5, 2 };
             case Chef.Jerrie: return new int[] { 4, 3, 3 };
         }
     }

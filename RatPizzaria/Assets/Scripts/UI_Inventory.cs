@@ -10,6 +10,7 @@ public class UI_Inventory : MonoBehaviour {
     private Transform itemSlotTemplate;
     private Transform orderSlotContainer;
     private Transform orderSlotTemplate;
+    private Button button;
     private Player associatedPlayer;
 
     private void Awake() {
@@ -17,6 +18,15 @@ public class UI_Inventory : MonoBehaviour {
         itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
         orderSlotContainer = transform.Find("OrderSlotContainer");
         orderSlotTemplate = orderSlotContainer.Find("OrderSlotTemplate");
+        button = itemSlotContainer.GetComponent<Button>();
+        button.onClick.AddListener(ThrowAwayItem);
+    }
+
+    private void ThrowAwayItem() {
+        Transform canvas = GameObject.Find("Canvas").transform;
+        Transform panelTemplate = canvas.Find("Panel");
+        OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
+        panel.DisplayDiscardPanel(associatedPlayer);
     }
 
     public void SetInventory(Inventory inventory, Player player) {

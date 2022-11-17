@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4196410164752166035}
   - component: {fileID: 4196410164752166037}
   - component: {fileID: 4196410164752166034}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 1
   m_Sprite: {fileID: -225610670, guid: 70d39670f287544da93c9e4991b65faf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28125, y: 0.30208334}
+    oldSize: {x: 0.28125, y: 0.296875}
     newSize: {x: 0.28125, y: 0.30208334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,9 +146,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e91f26b278fd43eeb873dd8348daaae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  currIndex: 0000000000000000
+  uiInfo: {fileID: 0}
+  moveText: {fileID: 0}
   moveSpeed: 5
-  uiInventory: {fileID: 0}
   waypointIndex: 0
-  textBox: {fileID: 0}
   moveAllowed: 0
+  maxDice: 0
+  inventoryLimit: 0
+  strength: 0
+  points: 0
