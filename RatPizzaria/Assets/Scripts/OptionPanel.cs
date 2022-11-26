@@ -14,7 +14,9 @@ public class OptionPanel : MonoBehaviour {
         gameObject.SetActive(true);
         Transform ingredientImage = transform.Find("Image");
         Transform itemText = transform.Find("Text");
-        Transform buttonTemplate = transform.Find("Button");
+        Transform buttonPanel = transform.Find("Panel");
+        Transform buttonTemplate = buttonPanel.Find("Button");
+        buttonTemplate.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 30);
         buttonTemplate.gameObject.SetActive(false);
 
         this.itemCollected = itemCollected;
@@ -25,15 +27,15 @@ public class OptionPanel : MonoBehaviour {
             player.GetInventory().GetItemList().Count + " / " +
             player.inventoryLimit + "] items in your inventory.";
 
-        Transform buttonTrans = Instantiate(buttonTemplate, transform);
+        Transform buttonTrans = Instantiate(buttonTemplate, buttonPanel);
         buttonTrans.gameObject.SetActive(true);
-        buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50);
+        buttonTrans.Find("Image").gameObject.SetActive(false);
         buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = "Yes";
         buttonTrans.GetComponent<Button>().onClick.AddListener(TakeIngredient);
 
-        Transform buttonTrans2 = Instantiate(buttonTemplate, transform);
+        Transform buttonTrans2 = Instantiate(buttonTemplate, buttonPanel);
         buttonTrans2.gameObject.SetActive(true);
-        buttonTrans2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -100);
+        buttonTrans2.Find("Image").gameObject.SetActive(false);
         buttonTrans2.Find("Text").GetComponent<TextMeshProUGUI>().text = "No";
         buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
@@ -42,7 +44,9 @@ public class OptionPanel : MonoBehaviour {
         gameObject.SetActive(true);
         Transform ingredientImage = transform.Find("Image");
         Transform itemText = transform.Find("Text");
-        Transform buttonTemplate = transform.Find("Button");
+        Transform buttonPanel = transform.Find("Panel");
+        Transform buttonTemplate = buttonPanel.Find("Button");
+        buttonTemplate.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 30);
         buttonTemplate.gameObject.SetActive(false);
 
         this.opponent = opponent.GetComponent<Player>();
@@ -52,15 +56,15 @@ public class OptionPanel : MonoBehaviour {
         itemText.GetComponent<TextMeshProUGUI>().text = "You ran into another rat!\n" + 
             "Do you want to start a fight to win his ingredients?";
 
-        Transform buttonTrans = Instantiate(buttonTemplate, transform);
+        Transform buttonTrans = Instantiate(buttonTemplate, buttonPanel);
         buttonTrans.gameObject.SetActive(true);
-        buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50);
+        buttonTrans.Find("Image").gameObject.SetActive(false);
         buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = "Yes";
         buttonTrans.GetComponent<Button>().onClick.AddListener(() => FightOpponent(this, this.opponent, player));
 
-        Transform buttonTrans2 = Instantiate(buttonTemplate, transform);
+        Transform buttonTrans2 = Instantiate(buttonTemplate, buttonPanel);
         buttonTrans2.gameObject.SetActive(true);
-        buttonTrans2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -100);
+        buttonTrans2.Find("Image").gameObject.SetActive(false);
         buttonTrans2.Find("Text").GetComponent<TextMeshProUGUI>().text = "No";
         buttonTrans2.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
@@ -74,9 +78,13 @@ public class OptionPanel : MonoBehaviour {
         Transform image = transform.Find("Image");
         if (sprite) image.GetComponent<Image>().sprite = sprite;
         else image.gameObject.SetActive(false);
-        Transform buttonTemplate = transform.Find("Button");
-        buttonTemplate.Find("Text").GetComponent<TextMeshProUGUI>().text = "Close";
-        buttonTemplate.GetComponent<Button>().onClick.AddListener(CloseWindow);
+
+        //Transform buttonPanel = transform.Find("Panel");
+        //Transform buttonTemplate = buttonPanel.Find("Button");
+        //buttonTemplate.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 30);
+
+        //buttonTemplate.Find("Text").GetComponent<TextMeshProUGUI>().text = "Close";
+        //buttonTemplate.GetComponent<Button>().onClick.AddListener(CloseWindow);
 
     }
 
@@ -85,7 +93,9 @@ public class OptionPanel : MonoBehaviour {
         Transform ingredientImage = transform.Find("Image");
         ingredientImage.gameObject.SetActive(false);
         Transform itemText = transform.Find("Text");
-        Transform buttonTemplate = transform.Find("Button");
+        Transform buttonPanel = transform.Find("Panel");
+        Transform buttonTemplate = buttonPanel.Find("Button");
+        buttonTemplate.GetComponent<RectTransform>().sizeDelta = new Vector2(60, 60);
         buttonTemplate.gameObject.SetActive(false);
 
         this.player = player;
@@ -93,30 +103,26 @@ public class OptionPanel : MonoBehaviour {
         itemText.GetComponent<TextMeshProUGUI>().text = "Choose one of your ingredients to discard.";
 
         HashSet<Item.ItemType> set = new HashSet<Item.ItemType>();
-        int y = 1;
         Transform buttonTrans;
         foreach (Item item in player.GetInventory().GetItemList()) {
             if (set.Contains(item.itemType)) continue;
             set.Add(item.itemType);
 
-            buttonTrans = Instantiate(buttonTemplate, transform);
+            buttonTrans = Instantiate(buttonTemplate, buttonPanel);
             buttonTrans.gameObject.SetActive(true);
-            buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50 * y++);
-            buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = item.itemType.ToString();
+            buttonTrans.Find("Text").gameObject.SetActive(false);
+            buttonTrans.Find("Image").GetComponent<Image>().sprite = item.GetSprite();
             buttonTrans.GetComponent<Button>().onClick.AddListener(() => DiscardIngredient(this.player, item));
         }
-        buttonTrans = Instantiate(buttonTemplate, transform);
-        buttonTrans.gameObject.SetActive(true);
-        buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50 * y);
-        buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = "Close";
-        buttonTrans.GetComponent<Button>().onClick.AddListener(CloseWindow);
     }
 
     private void DisplayWinningPanel(Player opponent, Player player) {
         gameObject.SetActive(true);
         Transform ingredientImage = transform.Find("Image");
         Transform itemText = transform.Find("Text");
-        Transform buttonTemplate = transform.Find("Button");
+        Transform buttonPanel = transform.Find("Panel");
+        Transform buttonTemplate = buttonPanel.Find("Button");
+        buttonTemplate.GetComponent<RectTransform>().sizeDelta = new Vector2(60, 60);
         buttonTemplate.gameObject.SetActive(false);
 
         this.opponent = opponent.GetComponent<Player>();
@@ -127,15 +133,14 @@ public class OptionPanel : MonoBehaviour {
             "Choose one of his ingredients to steal!";
 
         HashSet<Item.ItemType> set = new HashSet<Item.ItemType>();
-        int y = 1;
         foreach (Item item in opponent.GetInventory().GetItemList()) {
             if (set.Contains(item.itemType)) continue;
             set.Add(item.itemType);
 
-            Transform buttonTrans = Instantiate(buttonTemplate, transform);
+            Transform buttonTrans = Instantiate(buttonTemplate, buttonPanel);
             buttonTrans.gameObject.SetActive(true);
-            buttonTrans.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -50*y++);
-            buttonTrans.Find("Text").GetComponent<TextMeshProUGUI>().text = item.itemType.ToString();
+            buttonTrans.Find("Text").gameObject.SetActive(false);
+            buttonTrans.Find("Image").GetComponent<Image>().sprite = item.GetSprite();
             buttonTrans.GetComponent<Button>().onClick.AddListener(() => StealIngredient(this.player, this.opponent, item));
         }
     }
@@ -170,7 +175,7 @@ public class OptionPanel : MonoBehaviour {
         CloseWindow();
     }
 
-    private void CloseWindow() {
+    public void CloseWindow() {
         Destroy(gameObject);
     }
 }
