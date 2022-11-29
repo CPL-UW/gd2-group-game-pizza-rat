@@ -82,8 +82,8 @@ public class UI_Inventory : MonoBehaviour {
             ingredientCount = newOrder.GetRecipe().Count;
         }
 
-        if (ingredientCount == 1) newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(0, 7)));
-        else if (ingredientCount == 2) newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(7, 13)));
+        if (ingredientCount == 1) newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(0, 6)));
+        else if (ingredientCount == 2) newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(6, 13)));
         else newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(13, types.Length)));
 
 

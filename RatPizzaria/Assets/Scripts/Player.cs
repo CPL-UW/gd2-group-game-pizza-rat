@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     private Inventory inventory;
     private UI_Inventory uiInventory;
     private TextMeshProUGUI statTextMeshPro;
-    private Text pointsTextBox;
+    private TextMeshProUGUI pointsTextBox;
     private Transform[][] waypoints;
 
     [SerializeField] private float moveSpeed = 1f;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
         transform.position = waypoints[currIndex[0]][currIndex[1]].transform.position;
 
         statTextMeshPro = uiInfo.Find("Stat").Find("StatText").GetComponent<TextMeshProUGUI>();
-        pointsTextBox = uiInfo.Find("PlayerPoints").Find("PointText").GetComponent<Text>();
+        pointsTextBox = uiInfo.Find("PlayerPoints").Find("PointText").GetComponent<TextMeshProUGUI>();
         moveText = uiInfo.Find("PlayerMoveText").gameObject;
 
         uiInventory = uiInfo.Find("PlayerInventory").GetComponent<UI_Inventory>();
@@ -130,8 +130,8 @@ public class Player : MonoBehaviour {
     public Inventory GetInventory() { return this.inventory; }
 
     private void RefreshPlayerInfo() {
-        statTextMeshPro.text = "Limit: " + inventoryLimit + " Dice: " + maxDice
-            + " Strength: " + strength;
+        statTextMeshPro.text = "Limit: " + inventoryLimit + "   Dice: " + maxDice
+            + "   Strength: " + strength;
         pointsTextBox.text = "" + points;
     }
 
