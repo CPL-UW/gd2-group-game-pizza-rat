@@ -129,10 +129,10 @@ TextureImporter:
       name: TomatoSauce
       rect:
         serializedVersion: 2
-        x: 49
+        x: 51
         y: 7
-        width: 15
-        height: 16
+        width: 13
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

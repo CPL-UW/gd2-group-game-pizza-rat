@@ -79,7 +79,7 @@ public class UI_Inventory : MonoBehaviour {
             newOrder.GetComponent<RectTransform>().anchoredPosition = new Vector2(10 + x * orderSlotCellSize, -20);
             newOrder.gameObject.SetActive(true);
         } else {
-            ingredientCount = newOrder.GetRecipe().Count;
+            ingredientCount = newOrder.GetRecipe().Count-2;
         }
 
         if (ingredientCount == 1) newOrder.SetOrderType((Order.OrderType)types.GetValue(Random.Range(0, 6)));
