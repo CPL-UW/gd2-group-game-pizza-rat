@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class GameControl : MonoBehaviour {
 
     private static GameObject dice;
-    private Dictionary<Item.ItemType, int[]> ingredientsDict;
+    private Dictionary<Item.ItemType, List<ItemCollectable>> ingredientsDict;
 
     public static int diceSideThrown = 0;
     public static List<Player> playerList = new List<Player>();
@@ -91,7 +91,7 @@ public class GameControl : MonoBehaviour {
         dice.GetComponent<Dice>().RefreshDiceNumber(playerList[0].maxDice);
         waitForDice = true;
 
-        ingredientsDict = new Dictionary<Item.ItemType, int[]>();
+        ingredientsDict = new Dictionary<Item.ItemType, List<ItemCollectable>>();
         SpawnItemCollectable();
     }
 
@@ -142,24 +142,31 @@ public class GameControl : MonoBehaviour {
         waitForDice = false;
     }
 
-    public void DecreaseIngredientCount(Item.ItemType type) {
-        ingredientsDict.Remove(type);
+    public void DecreaseIngredientCount(ItemCollectable itemCollectable) {
+        Item.ItemType type = itemCollectable.GetItem().itemType;
+        ingredientsDict[type].Remove(itemCollectable);
     }
 
     private void SpawnItemCollectable() {
         Array typeList = Enum.GetValues(typeof(Item.ItemType));
         for (int i=0; i< typeList.Length; i++) {
             Item.ItemType type = (Item.ItemType)typeList.GetValue(i);
-            if (!ingredientsDict.ContainsKey(type)) {
+            if (!ingredientsDict.ContainsKey(type)) ingredientsDict.Add(type, new List<ItemCollectable>());
+
+            int maxSpawn = 1;
+            if (type == Item.ItemType.TomatoSauce || type == Item.ItemType.Dough) maxSpawn = 2;
+            while (ingredientsDict[type].Count < maxSpawn) {
                 int x = Random.Range(0, waypoints.Length);
                 int y = Random.Range(0, waypoints[0].Length);
                 while (!checkPosOverlay(x, y)) {
                     x = Random.Range(0, waypoints.Length);
                     y = Random.Range(0, waypoints[0].Length);
                 }
-                ItemCollectable.SpawnItemCollectable(waypoints[x][y].position,
+                ItemCollectable itemCollectable =
+                    ItemCollectable.SpawnItemCollectable(new int[] {x, y},
+                    waypoints[x][y].position,
                     new Item { itemType = type, amount = 1 });
-                ingredientsDict.Add(type, new int[] { x, y });
+                ingredientsDict[type].Add(itemCollectable);
             }
         }
     }
@@ -170,8 +177,11 @@ public class GameControl : MonoBehaviour {
             if (x == playerPos[0] && y == playerPos[1]) return false;
         }
 
-        foreach (int[] pos in ingredientsDict.Values) {
-            if (x == pos[0] && y == pos[1]) return false;
+        foreach (List<ItemCollectable> list in ingredientsDict.Values) {
+            foreach (ItemCollectable itemCollectable in list) {
+                int[] pos = itemCollectable.GetPos();
+                if (x == pos[0] && y == pos[1]) return false;
+            }
         }
         return true;
     }
