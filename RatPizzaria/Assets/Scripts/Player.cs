@@ -174,7 +174,7 @@ public class Player : MonoBehaviour {
         points += order.GetOrderPoints();
         if (order.bonusType == Order.BonusType.IncreaseInventory) inventoryLimit++;
         else if (order.bonusType == Order.BonusType.IncreaseStrength) strength++;
-        else if (order.bonusType == Order.BonusType.IncreaseDiceNumber) maxDice = Mathf.Min(maxDice+1, 6);
+        else if (order.bonusType == Order.BonusType.IncreaseDiceNumber) maxDice = Mathf.Min(maxDice+1, 8);
         RefreshPlayerInfo();
 
         uiInventory.CreateNewOrder(order);
