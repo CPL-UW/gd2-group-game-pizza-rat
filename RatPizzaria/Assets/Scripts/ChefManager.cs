@@ -17,6 +17,7 @@ public class ChefManager : MonoBehaviour {
 
     public List<Chef> chefs;
     public static List<int> currTakenChefs = new List<int>();
+    public string nextScene;
 
     public void PlayGame() {
         chefs = new List<Chef>();
@@ -25,8 +26,10 @@ public class ChefManager : MonoBehaviour {
         chefs.Add(GameObject.Find("P3").GetComponent<ChefSelection>().GetChef());
         chefs.Add(GameObject.Find("P4").GetComponent<ChefSelection>().GetChef());
         PrefabUtility.SaveAsPrefabAsset(this.gameObject, "Assets/Prefab/ChefManager.prefab");
-        SceneManager.LoadScene("PixelScene");
+        LoadNextScene();
     }
+
+    public void LoadNextScene() { SceneManager.LoadScene(nextScene); }
 
     public static Sprite GetSprite(Chef chef) {
         switch (chef) {

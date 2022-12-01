@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefs: 00000000010000000200000003000000
+  nextScene: PixelScene

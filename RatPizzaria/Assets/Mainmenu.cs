@@ -10,6 +10,10 @@ public class Mainmenu : MonoBehaviour
         SceneManager.LoadScene("ChooseYourChef");
     }
 
+    public void LoadTutorial() {
+        SceneManager.LoadScene("Tutorial 1");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit!");
