@@ -17,25 +17,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChooseYourChef.unity
     guid: ba5c34645a2ba49e1a61d071915c530d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial 4.unity
     guid: 6077930d6213e418f881d9f31fe89375
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial 3.unity
     guid: ec553670ebbb54ca3b3786f6027e23f7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial 2.unity
     guid: 5c3f27aac0b4d40ba8bdf791751eef62
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial 1.unity
     guid: dac05541bf5e1468595d47e1ef3f601a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial 5.unity
     guid: caafaeafb4ae34ac8aaf395c652e1914
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial 7.unity
     guid: 2db18404b023c45d38823285967e3c89
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tutorial 8.unity
     guid: f553ad545a66f44a09ef05d7522ed136
   m_configObjects: {}
