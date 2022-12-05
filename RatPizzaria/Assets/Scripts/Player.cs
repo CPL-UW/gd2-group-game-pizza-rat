@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     public int[] currIndex = new int[] { 0, 0 };
     public Transform uiInfo;
     public GameObject moveText;
+    public GameObject glowIcon;
 
     private Inventory inventory;
     private UI_Inventory uiInventory;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour {
         statTextMeshPro = uiInfo.Find("Stat").Find("StatText").GetComponent<TextMeshProUGUI>();
         pointsTextBox = uiInfo.Find("PlayerPoints").Find("PointText").GetComponent<TextMeshProUGUI>();
         moveText = uiInfo.Find("PlayerMoveText").gameObject;
+        glowIcon = uiInfo.Find("PlayerIconGlow").gameObject;
 
         uiInventory = uiInfo.Find("PlayerInventory").GetComponent<UI_Inventory>();
         inventory = new Inventory();
@@ -114,7 +116,7 @@ public class Player : MonoBehaviour {
                 Transform canvas = GameObject.Find("Canvas").transform;
                 Transform panelTemplate = canvas.Find("Panel");
                 OptionPanel panel = Instantiate(panelTemplate, canvas).GetComponent<OptionPanel>();
-                panel.DisplayBasicPanel("You reached the inventory limit!");
+                panel.DisplayDiscardPanel(this, itemCollectable);
             }
             else {
                 inventory.AddItem(itemCollectable.GetItem());

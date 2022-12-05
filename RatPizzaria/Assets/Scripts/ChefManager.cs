@@ -43,6 +43,18 @@ public class ChefManager : MonoBehaviour {
         }
     }
 
+    public static Sprite GetGlowSprite(Chef chef) {
+        switch (chef) {
+            default:
+            case Chef.BiggECheese: return ImageAsset.Instance.BiggECheeseGlow;
+            case Chef.TopHat: return ImageAsset.Instance.TopHatGlow;
+            case Chef.ClownRat: return ImageAsset.Instance.ClownRatGlow;
+            case Chef.MasterSilver: return ImageAsset.Instance.MasterSilverGlow;
+            case Chef.NYCStreetRat: return ImageAsset.Instance.NYCStreetRatGlow;
+            case Chef.Jerrie: return ImageAsset.Instance.JerrieGlow;
+        }
+    }
+
     public static String GetName(Chef chef) {
         switch (chef) {
             default:

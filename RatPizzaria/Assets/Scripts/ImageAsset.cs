@@ -51,4 +51,11 @@ public class ImageAsset : MonoBehaviour
     public Sprite MasterSilverSprite;
     public Sprite NYCStreetRatSprite;
     public Sprite JerrieSprite;
+
+    public Sprite BiggECheeseGlow;
+    public Sprite TopHatGlow;
+    public Sprite ClownRatGlow;
+    public Sprite MasterSilverGlow;
+    public Sprite NYCStreetRatGlow;
+    public Sprite JerrieGlow;
 }

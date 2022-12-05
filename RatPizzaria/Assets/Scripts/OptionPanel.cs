@@ -88,10 +88,11 @@ public class OptionPanel : MonoBehaviour {
 
     }
 
-    public void DisplayDiscardPanel(Player player) {
+    public void DisplayDiscardPanel(Player player, ItemCollectable itemToPick = null) {
         gameObject.SetActive(true);
         Transform ingredientImage = transform.Find("Image");
-        ingredientImage.gameObject.SetActive(false);
+        if (itemToPick != null) ingredientImage.GetComponent<Image>().sprite = itemToPick.GetItem().GetSprite();
+        else ingredientImage.gameObject.SetActive(false);
         Transform itemText = transform.Find("Text");
         Transform buttonPanel = transform.Find("Panel");
         Transform buttonTemplate = buttonPanel.Find("Button");
@@ -101,6 +102,7 @@ public class OptionPanel : MonoBehaviour {
         this.player = player;
 
         itemText.GetComponent<TextMeshProUGUI>().text = "Choose one of your ingredients to discard.";
+        if (itemToPick != null) itemText.GetComponent<TextMeshProUGUI>().text = "You reached the inventory limit!\nDo you wanna discard one of your current ingredients to pick this up?";
 
         HashSet<Item.ItemType> set = new HashSet<Item.ItemType>();
         Transform buttonTrans;
@@ -112,7 +114,7 @@ public class OptionPanel : MonoBehaviour {
             buttonTrans.gameObject.SetActive(true);
             buttonTrans.Find("Text").gameObject.SetActive(false);
             buttonTrans.Find("Image").GetComponent<Image>().sprite = item.GetSprite();
-            buttonTrans.GetComponent<Button>().onClick.AddListener(() => DiscardIngredient(this.player, item));
+            buttonTrans.GetComponent<Button>().onClick.AddListener(() => DiscardIngredient(this.player, item, itemToPick));
         }
     }
 
@@ -151,8 +153,12 @@ public class OptionPanel : MonoBehaviour {
         CloseWindow();
     }
 
-    private void DiscardIngredient(Player player, Item item) {
+    private void DiscardIngredient(Player player, Item item, ItemCollectable itemToPick = null) {
         player.GetInventory().Remove(item);
+        if (itemToPick != null) {
+            player.GetInventory().AddItem(itemToPick.GetItem());
+            itemToPick.DestroySelf();
+        }
         CloseWindow();
     }
 

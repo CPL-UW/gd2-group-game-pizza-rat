@@ -13,7 +13,7 @@ public class GameControl : MonoBehaviour {
 
     public static int diceSideThrown = 0;
     public static List<Player> playerList = new List<Player>();
-    public static int[,] playerStartWaypoint = new int[4, 2] { { 0, 0 }, { 0, 9 }, { 7, 0 }, { 7, 9 } };
+    public static int[,] playerStartWaypoint = new int[4, 2] { { 0, 0 }, { 0, 9 }, { 7, 9 }, { 7, 0 } };
 
     public static GameObject whosTurn;
     public static bool waitForDice = false;
@@ -31,6 +31,8 @@ public class GameControl : MonoBehaviour {
             playerInfo.gameObject.SetActive(true);
             playerInfo.transform.Find("PlayerMoveText").gameObject.SetActive(false);
             playerInfo.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(selectedChefs.chefs[i]);
+            playerInfo.Find("PlayerIconGlow").GetComponent<Image>().sprite = ChefManager.GetGlowSprite(selectedChefs.chefs[i]);
+            playerInfo.Find("PlayerIconGlow").gameObject.SetActive(false);
             RectTransform playerInfoRect = playerInfo.GetComponent<RectTransform>();
             switch (i) {
                 case 0:
@@ -44,14 +46,14 @@ public class GameControl : MonoBehaviour {
                     playerInfoRect.anchorMax = new Vector2(1, 1);
                     break;
                 case 2:
-                    playerInfoRect.anchoredPosition = new Vector2(67, 111);
-                    playerInfoRect.anchorMin = new Vector2(0, 0);
-                    playerInfoRect.anchorMax = new Vector2(0, 0);
-                    break;
-                case 3:
                     playerInfoRect.anchoredPosition = new Vector2(-67, 111);
                     playerInfoRect.anchorMin = new Vector2(1, 0);
                     playerInfoRect.anchorMax = new Vector2(1, 0);
+                    break;
+                case 3:
+                    playerInfoRect.anchoredPosition = new Vector2(67, 111);
+                    playerInfoRect.anchorMin = new Vector2(0, 0);
+                    playerInfoRect.anchorMax = new Vector2(0, 0);
                     break;
             }
 
@@ -86,6 +88,7 @@ public class GameControl : MonoBehaviour {
         InitPlayer();
         whosTurn = playerList[0].gameObject;
         whosTurn.GetComponent<Player>().moveText.SetActive(true);
+        whosTurn.GetComponent<Player>().glowIcon.SetActive(true);
 
         dice = GameObject.Find("Dice");
         dice.GetComponent<Dice>().RefreshDiceNumber(playerList[0].maxDice);
@@ -105,8 +108,10 @@ public class GameControl : MonoBehaviour {
                 if (playerList[i].moveText.activeSelf) {
                     playerList[i].moveAllowed = false;
                     playerList[i].moveText.gameObject.SetActive(false);
+                    playerList[i].glowIcon.gameObject.SetActive(false);
                     int nextPlayer = (i + 1)% 4;
                     playerList[nextPlayer].moveText.gameObject.SetActive(true);
+                    playerList[nextPlayer].glowIcon.gameObject.SetActive(true);
                     dice.GetComponent<Dice>().RefreshDiceNumber(playerList[nextPlayer].maxDice);
                     break;
                 }
