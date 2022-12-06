@@ -32,7 +32,7 @@ public class Dice : MonoBehaviour {
 
         for (int i = 0; i <= 20; i++)
         {
-            randomDiceSide = Random.Range(0, this.maxDiceNum);
+            randomDiceSide = Random.Range(1, this.maxDiceNum);
             rend.sprite = diceSides[randomDiceSide];
             yield return new WaitForSeconds(0.05f);
         }
