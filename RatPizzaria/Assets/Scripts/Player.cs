@@ -162,6 +162,10 @@ public class Player : MonoBehaviour {
         Debug.Log("You are ready to make pizza!");
         inventory.SetItemList(itemsCopy);
         CompleteOrder(order);
+        
+        AudioSource orderComplete = GameObject.Find("OrderSound").GetComponent<AudioSource>();
+        orderComplete.Play();
+
         //foreach (Item.ItemType type in recipe) {
         //    foreach (Item item in items.ToList()) {
         //        if (item.itemType.Equals(type)) {

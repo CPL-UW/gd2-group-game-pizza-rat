@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cf8f2b6b2ba4a40996cd373a2b0a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chefs: 00000000010000000200000003000000
+  chefs: 00000000050000000200000003000000
   nextScene: PixelScene
