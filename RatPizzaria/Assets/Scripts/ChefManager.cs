@@ -71,7 +71,7 @@ public class ChefManager : MonoBehaviour {
         switch (chef) {
             default:
             case Chef.BiggECheese: return new int[] {4, 6, 3 };
-            case Chef.TopHat: return new int[] { 5, 4, 4 };
+            case Chef.TopHat: return new int[] { 5, 4, 5 };
             case Chef.ClownRat: return new int[] { 4, 5, 4 };
             case Chef.MasterSilver: return new int[] { 5, 6, 2 };
             case Chef.NYCStreetRat: return new int[] { 4, 7, 2 };
