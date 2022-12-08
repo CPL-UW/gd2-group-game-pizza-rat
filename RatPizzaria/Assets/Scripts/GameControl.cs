@@ -21,7 +21,7 @@ public class GameControl : MonoBehaviour {
     public Transform[][] waypoints;
     public Transform winningPanel;
     public Transform canvas;
-    public ChefManager selectedChefs;
+    //public ChefManager selectedChefs;
 
     private void InitPlayer() {
         Transform playerInfoUI = canvas.Find("UI_PlayerInfo").transform;
@@ -30,8 +30,8 @@ public class GameControl : MonoBehaviour {
             Transform playerInfo = Instantiate(playerInfoTemplate, playerInfoUI);
             playerInfo.gameObject.SetActive(true);
             playerInfo.transform.Find("PlayerMoveText").gameObject.SetActive(false);
-            playerInfo.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(selectedChefs.chefs[i]);
-            playerInfo.Find("PlayerIconGlow").GetComponent<Image>().sprite = ChefManager.GetGlowSprite(selectedChefs.chefs[i]);
+            playerInfo.Find("PlayerIcon").GetComponent<Image>().sprite = ChefManager.GetSprite(ChefManager.chefs[i]);
+            playerInfo.Find("PlayerIconGlow").GetComponent<Image>().sprite = ChefManager.GetGlowSprite(ChefManager.chefs[i]);
             playerInfo.Find("PlayerIconGlow").gameObject.SetActive(false);
             RectTransform playerInfoRect = playerInfo.GetComponent<RectTransform>();
             switch (i) {
@@ -58,12 +58,12 @@ public class GameControl : MonoBehaviour {
             }
 
             GameObject player = Instantiate(ImageAsset.Instance.pfPlayer, GameObject.Find("Players").transform).gameObject;
-            player.GetComponent<SpriteRenderer>().sprite = ChefManager.GetSprite(selectedChefs.chefs[i]);
+            player.GetComponent<SpriteRenderer>().sprite = ChefManager.GetSprite(ChefManager.chefs[i]);
             player.GetComponent<Player>().currIndex[0] = playerStartWaypoint[i, 0];
             player.GetComponent<Player>().currIndex[1] = playerStartWaypoint[i, 1];
             player.GetComponent<Player>().uiInfo = playerInfo;
 
-            int[] properties = ChefManager.GetProperties(selectedChefs.chefs[i]);
+            int[] properties = ChefManager.GetProperties(ChefManager.chefs[i]);
             player.GetComponent<Player>().inventoryLimit = properties[0];
             player.GetComponent<Player>().maxDice = properties[1];
             player.GetComponent<Player>().strength = properties[2];

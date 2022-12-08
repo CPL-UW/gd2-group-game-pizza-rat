@@ -15,7 +15,7 @@ public class ChefManager : MonoBehaviour {
         Jerrie
     }
 
-    public List<Chef> chefs;
+    public static List<Chef> chefs;
     public static List<int> currTakenChefs = new List<int>();
     public string nextScene;
 
@@ -25,7 +25,7 @@ public class ChefManager : MonoBehaviour {
         chefs.Add(GameObject.Find("P2").GetComponent<ChefSelection>().GetChef());
         chefs.Add(GameObject.Find("P3").GetComponent<ChefSelection>().GetChef());
         chefs.Add(GameObject.Find("P4").GetComponent<ChefSelection>().GetChef());
-        PrefabUtility.SaveAsPrefabAsset(this.gameObject, "Assets/Prefab/ChefManager.prefab");
+        //PrefabUtility.SaveAsPrefabAsset(this.gameObject, "Assets/Prefab/ChefManager.prefab");
         LoadNextScene();
     }
 
