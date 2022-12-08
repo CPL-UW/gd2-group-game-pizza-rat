@@ -14,7 +14,9 @@ public class Player : MonoBehaviour {
 
     private Inventory inventory;
     private UI_Inventory uiInventory;
-    private TextMeshProUGUI statTextMeshPro;
+    private TextMeshProUGUI inventoryText;
+    private TextMeshProUGUI diceText;
+    private TextMeshProUGUI strengthText;
     private TextMeshProUGUI pointsTextBox;
     private Transform[][] waypoints;
 
@@ -50,7 +52,9 @@ public class Player : MonoBehaviour {
     public void FinishSetUpPlayer() {
         transform.position = waypoints[currIndex[0]][currIndex[1]].transform.position;
 
-        statTextMeshPro = uiInfo.Find("Stat").Find("StatText").GetComponent<TextMeshProUGUI>();
+        inventoryText = uiInfo.Find("Stat").Find("inventory").GetComponent<TextMeshProUGUI>();
+        diceText = uiInfo.Find("Stat").Find("dice").GetComponent<TextMeshProUGUI>();
+        strengthText = uiInfo.Find("Stat").Find("strength").GetComponent<TextMeshProUGUI>();
         pointsTextBox = uiInfo.Find("PlayerPoints").Find("PointText").GetComponent<TextMeshProUGUI>();
         moveText = uiInfo.Find("PlayerMoveText").gameObject;
         glowIcon = uiInfo.Find("PlayerIconGlow").gameObject;
@@ -69,7 +73,8 @@ public class Player : MonoBehaviour {
     private void Move()
     {
         if (GameControl.diceSideThrown > 0) {
-            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currIndex[0] > 0) { 
+            moveText.GetComponent<TextMeshProUGUI>().text = "" + GameControl.diceSideThrown + "   moves left";
+            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currIndex[0] > 0) {
                 Transform dest = waypoints[--currIndex[0]][currIndex[1]].transform;
                 while (transform.position != dest.position) {
                     transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
@@ -83,7 +88,7 @@ public class Player : MonoBehaviour {
                 }
                 GameControl.diceSideThrown--;
             }
-            else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && currIndex[0]+1 < waypoints.Length) {
+            else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && currIndex[0] + 1 < waypoints.Length) {
                 Transform dest = waypoints[++currIndex[0]][currIndex[1]].transform;
                 while (transform.position != dest.position) {
                     transform.position = Vector2.MoveTowards(transform.position, dest.position, moveSpeed * Time.deltaTime);
@@ -132,8 +137,9 @@ public class Player : MonoBehaviour {
     public Inventory GetInventory() { return this.inventory; }
 
     private void RefreshPlayerInfo() {
-        statTextMeshPro.text = "Limit: " + inventoryLimit + "   Dice: " + maxDice
-            + "   Strength: " + strength;
+        inventoryText.text = "" + inventoryLimit;
+        diceText.text = "" + maxDice;
+        strengthText.text = "" + strength;
         pointsTextBox.text = "" + points;
     }
 

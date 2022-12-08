@@ -110,6 +110,7 @@ public class GameControl : MonoBehaviour {
                     playerList[i].moveText.gameObject.SetActive(false);
                     playerList[i].glowIcon.gameObject.SetActive(false);
                     int nextPlayer = (i + 1)% 4;
+                    playerList[nextPlayer].moveText.GetComponent<TextMeshProUGUI>().text = "wait for  dice";
                     playerList[nextPlayer].moveText.gameObject.SetActive(true);
                     playerList[nextPlayer].glowIcon.gameObject.SetActive(true);
                     dice.GetComponent<Dice>().RefreshDiceNumber(playerList[nextPlayer].maxDice);
