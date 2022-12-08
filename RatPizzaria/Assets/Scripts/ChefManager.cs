@@ -70,12 +70,12 @@ public class ChefManager : MonoBehaviour {
     public static int[] GetProperties(Chef chef) {
         switch (chef) {
             default:
-            case Chef.BiggECheese: return new int[] {4, 6, 3 };
-            case Chef.TopHat: return new int[] { 5, 4, 5 };
-            case Chef.ClownRat: return new int[] { 4, 5, 4 };
-            case Chef.MasterSilver: return new int[] { 5, 6, 2 };
-            case Chef.NYCStreetRat: return new int[] { 4, 7, 2 };
-            case Chef.Jerrie: return new int[] { 5, 5, 3 };
+            case Chef.BiggECheese: return new int[] {3, 6, 3 };
+            case Chef.TopHat: return new int[] { 4, 4, 5 };
+            case Chef.ClownRat: return new int[] { 3, 5, 4 };
+            case Chef.MasterSilver: return new int[] { 4, 6, 2 };
+            case Chef.NYCStreetRat: return new int[] { 3, 7, 2 };
+            case Chef.Jerrie: return new int[] { 4, 5, 3 };
         }
     }
 }
