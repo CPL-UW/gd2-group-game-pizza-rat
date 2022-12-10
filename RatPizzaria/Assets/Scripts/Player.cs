@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
     [HideInInspector] public int inventoryLimit = 0;
     [HideInInspector] public int strength = 0;
     [HideInInspector] public int points = 0;
+    [HideInInspector] public ChefManager.Chef chef;
 
     // Use this for initialization
     private void Awake() {

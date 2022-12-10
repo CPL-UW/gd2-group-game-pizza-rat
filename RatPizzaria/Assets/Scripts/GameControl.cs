@@ -62,6 +62,7 @@ public class GameControl : MonoBehaviour {
             player.GetComponent<Player>().currIndex[0] = playerStartWaypoint[i, 0];
             player.GetComponent<Player>().currIndex[1] = playerStartWaypoint[i, 1];
             player.GetComponent<Player>().uiInfo = playerInfo;
+            player.GetComponent<Player>().chef = ChefManager.chefs[i];
 
             int[] properties = ChefManager.GetProperties(ChefManager.chefs[i]);
             player.GetComponent<Player>().inventoryLimit = properties[0];
@@ -121,7 +122,7 @@ public class GameControl : MonoBehaviour {
 
         // Determind if the game ends
         for (int i = 0; i < 4; i++) {
-            if (playerList[i].points >= 5) endGame(playerList[i].gameObject);
+            if (playerList[i].points >= 5) endGame(playerList[i]);
         }
     }
 
@@ -129,10 +130,10 @@ public class GameControl : MonoBehaviour {
         SceneManager.LoadScene("Menu");
     }
 
-    private void endGame(GameObject winner) {
+    private void endGame(Player winner) {
         gameOver = true;
         winningPanel.gameObject.SetActive(true);
-        winningPanel.Find("Text").GetComponent<TextMeshProUGUI>().text = "Congrats!\n" + winner.name + " Won!";
+        winningPanel.Find("Text").GetComponent<TextMeshProUGUI>().text = "Congrats!\n" + ChefManager.GetName(winner.chef) + " Won!";
         winningPanel.Find("Image").GetComponent<Image>().sprite = winner.GetComponent<SpriteRenderer>().sprite;
         for (int i=0; i<4; i++) {
             playerList[i].gameObject.SetActive(false);

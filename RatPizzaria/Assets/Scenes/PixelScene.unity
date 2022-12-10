@@ -408,7 +408,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winningPanel: {fileID: 592529377}
   canvas: {fileID: 544904355}
-  selectedChefs: {fileID: 6453985764115470726, guid: 489771ab38e9640178588b60e86f4128, type: 3}
 --- !u!4 &28269482
 Transform:
   m_ObjectHideFlags: 0
@@ -11157,7 +11156,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083873639}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b09b674562ad6483eba34d65d5308671, type: 3}
